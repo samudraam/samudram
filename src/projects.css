@@ -1,6 +1,6 @@
 @font-face {
   font-family: "broken";
-  src: url("BrokenPersonalUseBold-K73oo.ttf") format("truetype");
+  src: url("/BrokenPersonalUseBold-K73oo.ttf") format("truetype");
   font-weight: bold;
 }
 body,
@@ -10,8 +10,6 @@ html {
   height: 100%;
   background-color: #000;
 }
-
-
 
 .projects {
   padding: 4rem 2rem;
