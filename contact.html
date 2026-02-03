@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - samudraam</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <style>
+      /* Specific styling for contact page with blurred video */
+      .background.blurred video {
+        filter: blur(50px);
+        transform: scale(1.1);
+      }
+
+      .contact-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        position: relative;
+        padding: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .contact-content h1 {
+        font-family: "Syne", sans-serif;
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        letter-spacing: 0.1em;
+        text-transform: lowercase;
+        animation: fadeIn 1s ease-out forwards;
+      }
+
+      .contact-content p {
+        font-family: "Syne", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.9);
+        animation: fadeIn 1.5s ease-out forwards;
+        animation-delay: 0.3s;
+        opacity: 0;
+      }
+
+      .contact-content a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .contact-content a:hover {
+        color: #99dfff;
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .contact-content {
+          padding: 1rem;
+        }
+
+        .contact-content h1 {
+          font-size: 2rem;
+        }
+
+        .contact-content p {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="invert-circle"></div>
+    <nav class="pill-nav">
+      <a href="index.html">home</a>
+      <a href="about.html">about</a>
+      <a href="projects.html">works</a>
+      <a href="contact.html">contact</a>
+    </nav>
+    <div class="background blurred">
+      <video autoplay muted loop src="wave.mp4"></video>
+    </div>
+    <div class="contact-content">
+      <h1>contact</h1>
+      <p>
+        Please email me at
+        <a href="mailto:r.k.samudrala@wustl.edu">r.k.samudrala@wustl.edu</a>
+        for further inquiries.
+      </p>
+    </div>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
