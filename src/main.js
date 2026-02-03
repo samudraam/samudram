@@ -1,6 +1,7 @@
-const circle = document.querySelector(".invert-circle");
+/**
+ * Main entry point
+ */
 
-document.addEventListener("mousemove", (e) => {
-  circle.style.left = `${e.clientX}px`;
-  circle.style.top = `${e.clientY}px`;
+document.addEventListener("DOMContentLoaded", function () {
+  // Page initialization
 });
