@@ -7,9 +7,38 @@ body,
 html {
   margin: 0;
   padding: 0;
-  height: 100%;
-  background-color: #000;
+  min-height: 100vh;
   font-size: 24px;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    #018DC5 0%,
+    #02518B 49%,
+    #002476 90%,
+    #01031E 100%
+  );
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(43, 41, 101, 0.3);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .pill-nav {
@@ -46,46 +75,19 @@ html {
   color: #4e98ff;
 }
 
-/* Responsive design for tablets and mobile devices */
-@media (max-width: 768px) {
-  .pill-nav {
-    gap: 1.5rem;
-    padding: 0.75rem 2rem;
-    top: 1rem;
-  }
-
-  .pill-nav a {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .pill-nav {
-    gap: 1rem;
-    padding: 0.5rem 1.5rem;
-    top: 1rem;
-    width: auto;
-    max-width: 90vw;
-  }
-
-  .pill-nav a {
-    font-size: 0.9rem;
-  }
-}
-
 .projects {
   padding: 4rem 2rem;
   text-align: center;
-  background-color: #000;
+  background: transparent;
   color: white;
-  font-family: "Courier New", monospace;
+  font-family: "Syne", sans-serif;
 }
 
 .projects h2 {
-  font-family: "broken";
-  font-size: 5rem;
+  font-family: "Syne", sans-serif;
+  font-size: 2rem;
   margin-bottom: 2rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0em;
 }
 
 .projects-grid {
@@ -95,11 +97,40 @@ html {
   margin: 0 auto;
   box-sizing: border-box;
   justify-items: center;
+  animation-name: fadeInFromBelow; /* The name defined above */
+  animation-duration: 0.5s; /* How long the animation takes to complete */
+  animation-timing-function: ease-out; /* The speed curve of the animation */
+  animation-fill-mode: forwards; /* Ensures the element remains visible and in its final position after the animation ends */
 }
 
 .projects-grid img {
   width: 100%;
+  border-radius: 20%;
   height: auto;
   object-fit: cover;
 }
 
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 100%;
+  background: url('/photocards/grain.gif');
+  opacity: 0.07;
+  filter: blur(1px);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes fadeInFromBelow {
+  from {
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to {
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
