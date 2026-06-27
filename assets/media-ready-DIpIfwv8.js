@@ -1,0 +1,1 @@
+const a="is-media-ready",n=HTMLMediaElement.HAVE_CURRENT_DATA,t=e=>{e.classList.add(a)},d=e=>{if(e.readyState>=n){t(e);return}e.addEventListener("canplay",()=>t(e),{once:!0})},c=()=>{document.querySelectorAll("video").forEach(d)};document.addEventListener("DOMContentLoaded",c);

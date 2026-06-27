@@ -2,19 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :not(:defined) {
+        visibility: hidden;
+      }
+
+      video:not(.is-media-ready) {
+        visibility: hidden;
+      }
+    </style>
     <title>samudraam</title>
-    <script type="module" crossorigin src="./assets/main-C37kFN0b.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/main-DTr_GUw5.css">
+    <script type="module" crossorigin src="/samudram/assets/loader-C5IFBMMi.js"></script>
+    <script type="module" crossorigin src="/samudram/assets/media-ready-DIpIfwv8.js"></script>
+    <link rel="stylesheet" crossorigin href="/samudram/assets/media-ready-C661GnqH.css">
   </head>
-  <body>
+  <body class="is-loading">
+    <div
+      class="frost-loader"
+      id="frost-loader"
+      role="status"
+      aria-live="polite"
+      aria-hidden="false"
+      aria-label="Loading"
+    ></div>
     <div class="invert-circle"></div>
     <nav class="pill-nav">
-      <a href="/">home</a>
-      <a href="#">about</a>
+      <a href="index.html">home</a>
+      <a href="about.html">about</a>
       <a href="projects.html">works</a>
-      <a href="#">contact</a>
+      <a href="contact.html">contact</a>
     </nav>
     <div class="background">
       <video autoplay muted loop src="wave.mp4"></video>
