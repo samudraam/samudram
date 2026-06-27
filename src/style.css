@@ -69,7 +69,9 @@ h1.distressed {
     text-shadow: 0 0 10px #99dfff;
   }
   to {
-    text-shadow: 0 0 20px #ffffff, 0 0 10px #939393;
+    text-shadow:
+      0 0 20px #ffffff,
+      0 0 10px #939393;
   }
 }
 
