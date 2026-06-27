@@ -1,0 +1,377 @@
+{
+  "meta": {
+    "archiveLabel": "field log / archive",
+    "intro": "entries logged across creative coding, interaction design, and experimental web."
+  },
+  "categories": [
+    "All",
+    "Creative Coding",
+    "Interaction Design",
+    "Game Dev",
+    "Photography App",
+    "Prototype"
+  ],
+  "projects": [
+    {
+      "slug": "telegraphy",
+      "title": "Telegraphy",
+      "date": "2024-11",
+      "status": "COMPLETE",
+      "category": "Creative Coding",
+      "description": "A morse-code typing interface that turns typed phrases into morse code — part study in signal encoding, part love letter to early telecommunications.",
+      "tags": ["#JavaScript", "#Audio", "#Encoding"],
+      "thumbnail": "photocards/telegraphy.png",
+      "externalUrl": "https://codesandbox.io/p/github/samudraam/morsecode/main",
+      "mediaCount": 3,
+      "media": {
+        "videos": [
+          {
+            "src": "wave.mp4",
+            "poster": "photocards/telegraphy.png",
+            "caption": "Signal pulse visualization during live transmission."
+          }
+        ],
+        "images": [
+          {
+            "src": "photocards/telegraphy.png",
+            "alt": "Telegraphy interface screenshot",
+            "caption": "The transmission panel with morse output display."
+          },
+          {
+            "src": "photocards/grain.gif",
+            "alt": "CRT grain texture overlay",
+            "caption": "Grain overlay applied to mimic vintage display hardware."
+          }
+        ]
+      },
+      "notes": [
+        {
+          "heading": "Concept",
+          "body": "I wanted to explore how information compresses into rhythm. Morse code felt like the perfect bridge between language and pattern — something humans can both read and feel."
+        },
+        {
+          "heading": "Process",
+          "body": "Built with vanilla JavaScript and the Web Audio API. Each character maps to a frequency-duration pair. The visual layer uses canvas to draw pulse waves that sync with audio output."
+        },
+        {
+          "heading": "Reflection",
+          "body": "This project reminded me that constraints breed creativity. Limiting the alphabet to dots and dashes forced me to think about timing, silence, and the space between signals."
+        }
+      ]
+    },
+    {
+      "slug": "self-scroller",
+      "title": "Self-Scroller",
+      "date": "2024-09",
+      "status": "COMPLETE",
+      "category": "Interaction Design",
+      "description": "An auto-scrolling personal narrative page that drifts through fragments of biography, photos, and ambient sound — scrolling as storytelling.",
+      "tags": ["#Scroll", "#Narrative", "#CSS"],
+      "thumbnail": "photocards/self.png",
+      "externalUrl": "https://glistening-donut-59ee02.netlify.app/",
+      "mediaCount": 2,
+      "media": {
+        "videos": [],
+        "images": [
+          {
+            "src": "photocards/self.png",
+            "alt": "Self-Scroller hero section",
+            "caption": "Opening frame of the auto-scroll sequence."
+          }
+        ]
+      },
+      "notes": [
+        {
+          "heading": "Concept",
+          "body": "What if a portfolio didn't wait for you to scroll? Self-Scroller treats the page as a slow film reel — the viewer becomes a passenger rather than a navigator."
+        },
+        {
+          "heading": "Process",
+          "body": "Used CSS scroll-driven animations and intersection observers to choreograph content reveals. Timing curves were tuned by hand until the drift felt meditative, not mechanical."
+        }
+      ]
+    },
+    {
+      "slug": "revride",
+      "title": "RevRide",
+      "date": "2024-05",
+      "status": "COMPLETE",
+      "category": "Game Dev",
+      "description": "A browser-based racing prototype with procedural track generation and synthwave visuals — built as a final project exploring real-time rendering on the web.",
+      "tags": ["#WebGL", "#Three.js", "#Game"],
+      "thumbnail": "photocards/revride.png",
+      "externalUrl": "https://cse204-2024.github.io/10-final-project-samudraam/",
+      "mediaCount": 4,
+      "media": {
+        "videos": [
+          {
+            "src": "wave.mp4",
+            "poster": "photocards/revride.png",
+            "caption": "Gameplay loop — track generation and speed mechanics."
+          }
+        ],
+        "images": [
+          {
+            "src": "photocards/revride.png",
+            "alt": "RevRide gameplay screenshot",
+            "caption": "Neon track environment with speed HUD overlay."
+          }
+        ]
+      },
+      "notes": [
+        {
+          "heading": "Concept",
+          "body": "RevRide started as a question: can a semester-long web project feel like an arcade cabinet? I leaned into neon palettes and low-poly geometry to keep performance smooth in-browser."
+        },
+        {
+          "heading": "Technical Notes",
+          "body": "Procedural track segments are assembled from prefab curves. Collision detection runs on a simplified mesh to avoid frame drops on lower-end laptops."
+        }
+      ]
+    },
+    {
+      "slug": "igor",
+      "title": "Igor",
+      "date": "2024-03",
+      "status": "WIP",
+      "category": "Creative Coding",
+      "description": "An experimental character study rendered through layered shader passes — exploring identity as something that shifts under different light conditions.",
+      "tags": ["#Shaders", "#GLSL", "#Portrait"],
+      "thumbnail": "photocards/igor.png",
+      "externalUrl": "",
+      "mediaCount": 2,
+      "media": {
+        "videos": [],
+        "images": [
+          {
+            "src": "photocards/igor.png",
+            "alt": "Igor character render",
+            "caption": "Primary portrait pass with chromatic aberration."
+          }
+        ]
+      },
+      "notes": [
+        {
+          "heading": "Concept",
+          "body": "Igor is named after the lab assistant trope — the figure behind the experiment. Here, the experiment is portraiture itself: how much can you distort a face before it stops feeling human?"
+        },
+        {
+          "heading": "Status",
+          "body": "Still iterating on the displacement maps. Planning to add audio-reactive distortion tied to ambient input."
+        }
+      ]
+    },
+    {
+      "slug": "go-forth-supreme",
+      "title": "Go Forth Supreme PLC",
+      "date": "2023-12",
+      "status": "COMPLETE",
+      "category": "Game Dev",
+      "description": "A retro-styled puzzle game built for a game jam — navigate industrial logic gates to restore power to a crumbling factory floor.",
+      "tags": ["#GameJam", "#Puzzle", "#Pixel"],
+      "thumbnail": "photocards/PLC1.png",
+      "externalUrl": "https://dunderhyphenp.itch.io/go-forth-supreme-plc",
+      "mediaCount": 3,
+      "media": {
+        "videos": [],
+        "images": [
+          {
+            "src": "photocards/PLC1.png",
+            "alt": "Go Forth Supreme title screen",
+            "caption": "Title screen with factory-floor tileset."
+          }
+        ]
+      },
+      "notes": [
+        {
+          "heading": "Concept",
+          "body": "Our jam theme was 'broken systems.' We interpreted that literally — programmable logic controllers as puzzle mechanics."
+        },
+        {
+          "heading": "Collaboration",
+          "body": "Co-developed with Team PLC. I handled level design and UI; my teammate built the gate logic engine in 48 hours."
+        }
+      ]
+    },
+    {
+      "slug": "enzio-ware-archive",
+      "title": "Enzio Ware Archive",
+      "date": "2023-10",
+      "status": "COMPLETE",
+      "category": "Game Dev",
+      "description": "A narrative archive game where players restore corrupted memory files from a defunct software company — part visual novel, part file-system simulator.",
+      "tags": ["#Narrative", "#Retro", "#UI"],
+      "thumbnail": "photocards/PLC2.png",
+      "externalUrl": "https://teamplc.itch.io/enzio-ware-archive",
+      "mediaCount": 5,
+      "media": {
+        "videos": [],
+        "images": [
+          {
+            "src": "photocards/PLC2.png",
+            "alt": "Enzio Ware file browser interface",
+            "caption": "Archive browser with corrupted file tree."
+          }
+        ]
+      },
+      "notes": [
+        {
+          "heading": "Concept",
+          "body": "Inspired by early 2000s shareware aesthetics. The UI is the story — every dialog box and error message reveals lore about the company that built it."
+        }
+      ]
+    },
+    {
+      "slug": "nitelife",
+      "title": "Nitelife Gallery",
+      "date": "2024-02",
+      "status": "COMPLETE",
+      "category": "Photography App",
+      "description": "A nocturnal photo gallery organized by color temperature and noise grain — built to showcase low-light photography as its own visual language.",
+      "tags": ["#Gallery", "#Photography", "#DarkUI"],
+      "thumbnail": "photocards/nitelife.png",
+      "externalUrl": "https://cse204-2024.github.io/07-image-gallery-samudraam/",
+      "mediaCount": 6,
+      "media": {
+        "videos": [],
+        "images": [
+          {
+            "src": "photocards/nitelife.png",
+            "alt": "Nitelife gallery grid view",
+            "caption": "Gallery index sorted by warm/cool color bands."
+          }
+        ]
+      },
+      "notes": [
+        {
+          "heading": "Concept",
+          "body": "Most photo galleries default to white backgrounds. Nitelife inverts that — the UI recedes so the images feel like they emit their own light."
+        },
+        {
+          "heading": "Process",
+          "body": "Images are tagged with dominant hue values extracted via canvas sampling. The sort algorithm groups photos into temperature bands at runtime."
+        }
+      ]
+    },
+    {
+      "slug": "crossfire",
+      "title": "Crossfire Prototype",
+      "date": "2024-06",
+      "status": "COMPLETE",
+      "category": "Prototype",
+      "description": "An interactive Figma prototype for a multiplayer strategy interface — exploring how players manage concurrent actions under time pressure.",
+      "tags": ["#Figma", "#UX", "#Multiplayer"],
+      "thumbnail": "photocards/crossfire.png",
+      "externalUrl": "https://www.figma.com/proto/yUFeEsZhdopigFYgoWaXnD/project-interview?page-id=8%3A2&node-id=8-3&viewport=421%2C345%2C0.28&t=oRUdlEMNPlYzm9VW-1&scaling=scale-down-width&content-scaling=fixed",
+      "mediaCount": 2,
+      "media": {
+        "videos": [],
+        "images": [
+          {
+            "src": "photocards/crossfire.png",
+            "alt": "Crossfire prototype main screen",
+            "caption": "Primary action panel with concurrent move indicators."
+          }
+        ]
+      },
+      "notes": [
+        {
+          "heading": "Concept",
+          "body": "Designed during a project interview sprint. The core UX challenge was communicating overlapping player intents without overwhelming the screen."
+        }
+      ]
+    },
+    {
+      "slug": "cookbook",
+      "title": "Cookbook Prototype",
+      "date": "2024-04",
+      "status": "COMPLETE",
+      "category": "Prototype",
+      "description": "A tactile recipe app prototype emphasizing hand gestures and step-by-step flow — designed for kitchen contexts where touch targets need to be generous.",
+      "tags": ["#Figma", "#Mobile", "#Food"],
+      "thumbnail": "photocards/cookbook.png",
+      "externalUrl": "https://www.figma.com/proto/6F1arhLeJ4bJ8Gx8FfW7Jn/Ramya-Working-Prototype?page-id=0%3A1&node-id=5-1310&starting-point-node-id=1%3A3&scaling=min-zoom&content-scaling=fixed&t=UgdEotpcBIJZmptO-1",
+      "mediaCount": 3,
+      "media": {
+        "videos": [],
+        "images": [
+          {
+            "src": "photocards/cookbook.png",
+            "alt": "Cookbook app recipe step view",
+            "caption": "Step view with swipe-to-advance interaction pattern."
+          }
+        ]
+      },
+      "notes": [
+        {
+          "heading": "Concept",
+          "body": "Cooking with messy hands means tiny buttons fail. Every interactive element in this prototype is sized for accidental taps and wet fingers."
+        }
+      ]
+    },
+    {
+      "slug": "wave-function",
+      "title": "Wave Function",
+      "date": "2024-11",
+      "status": "COMPLETE",
+      "category": "Creative Coding",
+      "description": "Generative visuals driven by ambient audio input — sine waves stack and interfere to produce ocean-like interference patterns in real time.",
+      "tags": ["#WebGL", "#Audio", "#Generative"],
+      "thumbnail": "photocards/telegraphy.png",
+      "externalUrl": "",
+      "mediaCount": 2,
+      "media": {
+        "videos": [
+          {
+            "src": "wave.mp4",
+            "poster": "photocards/telegraphy.png",
+            "caption": "Live audio-reactive wave interference field."
+          }
+        ],
+        "images": []
+      },
+      "notes": [
+        {
+          "heading": "Concept",
+          "body": "Wave Function treats sound as a physical material. Microphone input modulates amplitude and phase across layered sine functions rendered on canvas."
+        },
+        {
+          "heading": "Process",
+          "body": "Started as a weekend sketch, evolved into a meditative installation piece. The ocean palette emerged naturally from stacking blue-shifted harmonics."
+        }
+      ]
+    },
+    {
+      "slug": "depth-chart",
+      "title": "Depth Chart",
+      "date": "2024-08",
+      "status": "WIP",
+      "category": "Creative Coding",
+      "description": "A sonar-inspired data visualization that maps portfolio metrics as underwater terrain — depth equals time, brightness equals activity.",
+      "tags": ["#D3", "#DataViz", "#Ocean"],
+      "thumbnail": "photocards/nitelife.png",
+      "externalUrl": "",
+      "mediaCount": 1,
+      "media": {
+        "videos": [],
+        "images": [
+          {
+            "src": "photocards/nitelife.png",
+            "alt": "Depth chart terrain visualization",
+            "caption": "Bathymetric-style render of activity over time."
+          }
+        ]
+      },
+      "notes": [
+        {
+          "heading": "Concept",
+          "body": "I wanted a self-reflective viz that felt native to this portfolio's ocean theme. Depth Chart reads like a sonar scan of my own commit history."
+        },
+        {
+          "heading": "Next Steps",
+          "body": "Planning to hook this up to live GitHub data and add ping animations when new activity surfaces."
+        }
+      ]
+    }
+  ]
+}

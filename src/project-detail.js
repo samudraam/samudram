@@ -1,0 +1,216 @@
+import projectsData from "./data/projects.json";
+
+/**
+ * Reads the project slug from the URL query string.
+ * @returns {string | null}
+ */
+const getSlugFromUrl = () => {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("slug");
+};
+
+/**
+ * Finds a project record by slug.
+ * @param {string} slug
+ * @returns {typeof projectsData.projects[number] | undefined}
+ */
+const findProjectBySlug = (slug) =>
+  projectsData.projects.find((project) => project.slug === slug);
+
+/**
+ * Builds HTML for video media blocks.
+ * @param {typeof projectsData.projects[number]["media"]["videos"]} videos
+ * @returns {string}
+ */
+const createVideosHtml = (videos) => {
+  if (!videos.length) {
+    return "";
+  }
+
+  const items = videos
+    .map(
+      (video) => `
+        <figure class="media-video">
+          <video
+            controls
+            muted
+            playsinline
+            preload="metadata"
+            poster="${video.poster || ""}"
+          >
+            <source src="${video.src}" type="video/mp4" />
+          </video>
+          ${
+            video.caption
+              ? `<figcaption class="media-video__caption">${video.caption}</figcaption>`
+              : ""
+          }
+        </figure>
+      `
+    )
+    .join("");
+
+  return `
+    <section class="media-section" aria-label="Project videos">
+      <p class="media-section__label">Video</p>
+      <div class="media-videos">${items}</div>
+    </section>
+  `;
+};
+
+/**
+ * Builds HTML for image gallery blocks.
+ * @param {typeof projectsData.projects[number]["media"]["images"]} images
+ * @returns {string}
+ */
+const createImagesHtml = (images) => {
+  if (!images.length) {
+    return "";
+  }
+
+  const items = images
+    .map(
+      (image) => `
+        <figure class="media-image">
+          <img src="${image.src}" alt="${image.alt}" loading="lazy" />
+          ${
+            image.caption
+              ? `<figcaption class="media-image__caption">${image.caption}</figcaption>`
+              : ""
+          }
+        </figure>
+      `
+    )
+    .join("");
+
+  return `
+    <section class="media-section" aria-label="Project images">
+      <p class="media-section__label">Gallery</p>
+      <div class="media-gallery">${items}</div>
+    </section>
+  `;
+};
+
+/**
+ * Builds HTML for written note sections.
+ * @param {typeof projectsData.projects[number]["notes"]} notes
+ * @returns {string}
+ */
+const createNotesHtml = (notes) => {
+  if (!notes.length) {
+    return "";
+  }
+
+  const blocks = notes
+    .map(
+      (note) => `
+        <article class="note-block">
+          <h2 class="note-block__heading">${note.heading}</h2>
+          <p class="note-block__body">${note.body}</p>
+        </article>
+      `
+    )
+    .join("");
+
+  return `
+    <section class="notes-section" aria-label="Project notes">
+      <p class="notes-section__label">Field Notes</p>
+      ${blocks}
+    </section>
+  `;
+};
+
+/**
+ * Renders a not-found state when the slug is missing or invalid.
+ * @param {HTMLElement} container
+ */
+const renderNotFound = (container) => {
+  container.innerHTML = `
+    <p class="project-detail__error">
+      Entry not found in the archive.
+      <a href="projects.html" class="project-detail__back">Return to projects</a>
+    </p>
+  `;
+  document.title = "Not Found — Projects";
+};
+
+/**
+ * Renders the full project detail view from JSON data.
+ * @param {HTMLElement} container
+ * @param {typeof projectsData.projects[number]} project
+ */
+const renderProjectDetail = (container, project) => {
+  document.title = `${project.title} — Projects`;
+
+  const statusClass =
+    project.status === "WIP" ? " project-detail__status--wip" : "";
+  const tagsHtml = project.tags.map((tag) => `<li>${tag}</li>`).join("");
+  const externalLink = project.externalUrl
+    ? `<a
+        class="project-detail__external"
+        href="${project.externalUrl}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View live project
+        <span aria-hidden="true">↗</span>
+      </a>`
+    : "";
+
+  container.innerHTML = `
+    <a href="projects.html" class="project-detail__back">
+      <span aria-hidden="true">←</span> Field Log / Archive
+    </a>
+
+    <div class="project-detail__meta-row">
+      <span class="project-detail__date">${project.date}</span>
+      <span class="project-detail__status${statusClass}">${project.status}</span>
+      <span class="project-detail__category">${project.category}</span>
+    </div>
+
+    <h1 class="project-detail__title">${project.title}</h1>
+    <p class="project-detail__desc">${project.description}</p>
+
+    <ul class="project-detail__tags">${tagsHtml}</ul>
+
+    ${externalLink}
+
+    ${createVideosHtml(project.media.videos)}
+    ${createImagesHtml(project.media.images)}
+    ${createNotesHtml(project.notes)}
+  `;
+
+  container.querySelectorAll("video").forEach((video) => {
+    video.addEventListener("loadeddata", () => {
+      video.classList.add("is-media-ready");
+    });
+  });
+};
+
+/**
+ * Initializes the project detail template page.
+ */
+const initProjectDetail = () => {
+  const container = document.getElementById("project-detail");
+  const slug = getSlugFromUrl();
+
+  if (!(container instanceof HTMLElement)) {
+    return;
+  }
+
+  if (!slug) {
+    renderNotFound(container);
+    return;
+  }
+
+  const project = findProjectBySlug(slug);
+
+  if (!project) {
+    renderNotFound(container);
+    return;
+  }
+
+  renderProjectDetail(container, project);
+};
+
+document.addEventListener("DOMContentLoaded", initProjectDetail);

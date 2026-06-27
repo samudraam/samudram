@@ -12,8 +12,8 @@
         visibility: hidden;
       }
     </style>
-    <title>Projects — samudraam</title>
-    <link rel="stylesheet" href="src/projects.css" />
+    <title>Project — samudraam</title>
+    <link rel="stylesheet" href="src/project-detail.css" />
   </head>
   <body class="is-loading">
     <div
@@ -32,27 +32,8 @@
       <a href="projects.html">works</a>
       <a href="contact.html">contact</a>
     </nav>
-    <main class="archive">
-      <p class="archive-breadcrumb">
-        <span class="archive-breadcrumb__arrow" aria-hidden="true">←</span>
-        field log / archive
-      </p>
-      <header class="archive-header">
-        <h1>projects</h1>
-        <p class="archive-header__intro">
-          My projects, experiments, and explorations.
-        </p>
-        <p class="archive-header__count" id="archive-count"></p>
-      </header>
-      <div
-        class="filter-bar"
-        id="filter-bar"
-        role="group"
-        aria-label="Filter projects by category"
-      ></div>
-      <ul class="project-list" id="project-list" aria-label="Project entries"></ul>
-    </main>
+    <main class="project-detail" id="project-detail"></main>
     <script type="module" src="src/loader.js"></script>
-    <script type="module" src="src/projects-list.js"></script>
+    <script type="module" src="src/project-detail.js"></script>
   </body>
 </html>
