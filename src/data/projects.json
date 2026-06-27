@@ -279,45 +279,14 @@
       ]
     },
     {
-      "slug": "go-forth-supreme",
-      "title": "Go Forth Supreme PLC",
-      "date": "2023-12",
-      "status": "COMPLETE",
-      "category": "Game Dev",
-      "description": "A retro-styled puzzle game built for a game jam — navigate industrial logic gates to restore power to a crumbling factory floor.",
-      "tags": ["#GameJam", "#Puzzle", "#Pixel"],
-      "thumbnail": "photocards/PLC1.png",
-      "externalUrl": "https://dunderhyphenp.itch.io/go-forth-supreme-plc",
-      "mediaCount": 3,
-      "media": {
-        "videos": [],
-        "images": [
-          {
-            "src": "photocards/PLC1.png",
-            "alt": "Go Forth Supreme title screen",
-            "caption": "Title screen with factory-floor tileset."
-          }
-        ]
-      },
-      "notes": [
-        {
-          "heading": "Concept",
-          "body": "Our jam theme was 'broken systems.' We interpreted that literally — programmable logic controllers as puzzle mechanics."
-        },
-        {
-          "heading": "Collaboration",
-          "body": "Co-developed with Team PLC. I handled level design and UI; my teammate built the gate logic engine in 48 hours."
-        }
-      ]
-    },
-    {
       "slug": "nitelife",
       "title": "Nitelife Gallery",
+      "theme": "",
       "date": "2024-02",
       "status": "COMPLETE",
-      "category": "Photography App",
-      "description": "A nocturnal photo gallery organized by color temperature and noise grain — built to showcase low-light photography as its own visual language.",
-      "tags": ["#Gallery", "#Photography", "#DarkUI"],
+      "category": "Gallery App",
+      "description": "A nocturnal photo gallery built with plain html, css, and javascript to showcase low-light photography as its own visual language.",
+      "tags": ["#HTML", "#CSS", "#JavaScript"],
       "thumbnail": "photocards/nitelife.png",
       "externalUrl": "https://cse204-2024.github.io/07-image-gallery-samudraam/",
       "mediaCount": 6,
