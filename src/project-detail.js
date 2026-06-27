@@ -1,4 +1,6 @@
 import projectsData from "./data/projects.json";
+import { initTheme } from "./apply-theme.js";
+import { initGalleryLightbox } from "./gallery-lightbox.js";
 
 /**
  * Reads the project slug from the URL query string.
@@ -23,14 +25,14 @@ const findProjectBySlug = (slug) =>
  * @returns {string}
  */
 const createVideosHtml = (videos) => {
-  if (!videos.length) {
+  if (!videos?.length) {
     return "";
   }
 
   const items = videos
     .map(
       (video) => `
-        <figure class="media-video">
+        <figure class="media-video glass-surface">
           <video
             controls
             muted
@@ -64,21 +66,28 @@ const createVideosHtml = (videos) => {
  * @returns {string}
  */
 const createImagesHtml = (images) => {
-  if (!images.length) {
+  if (!images?.length) {
     return "";
   }
 
   const items = images
     .map(
-      (image) => `
-        <figure class="media-image">
-          <img src="${image.src}" alt="${image.alt}" loading="lazy" />
-          ${
-            image.caption
-              ? `<figcaption class="media-image__caption">${image.caption}</figcaption>`
-              : ""
-          }
-        </figure>
+      (image, index) => `
+        <button
+          type="button"
+          class="media-image__trigger"
+          data-gallery-index="${index}"
+          aria-label="View full size: ${image.alt || `Image ${index + 1}`}"
+        >
+          <figure class="media-image glass-surface">
+            <img src="${image.src}" alt="${image.alt ?? ""}" loading="lazy" />
+            ${
+              image.caption
+                ? `<figcaption class="media-image__caption">${image.caption}</figcaption>`
+                : ""
+            }
+          </figure>
+        </button>
       `
     )
     .join("");
@@ -97,7 +106,7 @@ const createImagesHtml = (images) => {
  * @returns {string}
  */
 const createNotesHtml = (notes) => {
-  if (!notes.length) {
+  if (!notes?.length) {
     return "";
   }
 
@@ -147,7 +156,7 @@ const renderProjectDetail = (container, project) => {
   const tagsHtml = project.tags.map((tag) => `<li>${tag}</li>`).join("");
   const externalLink = project.externalUrl
     ? `<a
-        class="project-detail__external"
+        class="project-detail__external glass-surface"
         href="${project.externalUrl}"
         target="_blank"
         rel="noopener noreferrer"
@@ -157,6 +166,8 @@ const renderProjectDetail = (container, project) => {
       </a>`
     : "";
 
+  const media = project.media ?? {};
+
   container.innerHTML = `
     <a href="projects.html" class="project-detail__back">
       <span aria-hidden="true">←</span> Field Log / Archive
@@ -165,7 +176,7 @@ const renderProjectDetail = (container, project) => {
     <div class="project-detail__meta-row">
       <span class="project-detail__date">${project.date}</span>
       <span class="project-detail__status${statusClass}">${project.status}</span>
-      <span class="project-detail__category">${project.category}</span>
+      <span class="project-detail__category glass-surface">${project.category}</span>
     </div>
 
     <h1 class="project-detail__title">${project.title}</h1>
@@ -175,8 +186,8 @@ const renderProjectDetail = (container, project) => {
 
     ${externalLink}
 
-    ${createVideosHtml(project.media.videos)}
-    ${createImagesHtml(project.media.images)}
+    ${createVideosHtml(media.videos)}
+    ${createImagesHtml(media.images)}
     ${createNotesHtml(project.notes)}
   `;
 
@@ -185,6 +196,10 @@ const renderProjectDetail = (container, project) => {
       video.classList.add("is-media-ready");
     });
   });
+
+  if (media.images?.length) {
+    initGalleryLightbox(container, media.images);
+  }
 };
 
 /**
@@ -198,12 +213,15 @@ const initProjectDetail = () => {
     return;
   }
 
+  const project = slug ? findProjectBySlug(slug) : undefined;
+  const themeRef = project?.theme ?? projectsData.defaultTheme;
+
+  initTheme(projectsData.themes, themeRef, projectsData.defaultTheme);
+
   if (!slug) {
     renderNotFound(container);
     return;
   }
-
-  const project = findProjectBySlug(slug);
 
   if (!project) {
     renderNotFound(container);

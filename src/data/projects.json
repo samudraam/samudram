@@ -1,4 +1,74 @@
 {
+  "defaultTheme": "field",
+  "themes": {
+    "field": {
+      "background": "radial-gradient(circle at center, #018dc5 0%, #02518b 49%, #002476 90%, #01031e 100%)",
+      "overlay": "rgba(43, 41, 101, 0.3)",
+      "accent": "193, 204, 95",
+      "accentHover": "240, 247, 175",
+      "tag": "193, 204, 95",
+      "navHover": "78, 152, 255",
+      "wip": "255, 180, 80",
+      "glow": "0, 212, 170",
+      "surface": "0, 5, 15"
+    },
+    "ocean": {
+      "background": "radial-gradient(circle at center, #018dc5 0%, #02518b 49%, #002476 90%, #01031e 100%)",
+      "overlay": "rgba(43, 41, 101, 0.3)",
+      "accent": "0, 212, 170",
+      "accentHover": "80, 230, 200",
+      "tag": "100, 180, 220",
+      "navHover": "78, 152, 255",
+      "wip": "255, 180, 80",
+      "glow": "0, 212, 170",
+      "surface": "0, 5, 15"
+    },
+    "black": {
+      "background": "#0a0a0a",
+      "overlay": "rgba(0, 0, 0, 0.6)",
+      "accent": "255, 255, 255",
+      "accentHover": "200, 200, 200",
+      "tag": "160, 160, 160",
+      "navHover": "255, 255, 255",
+      "wip": "255, 180, 80",
+      "glow": "255, 255, 255",
+      "surface": "0, 0, 0"
+    },
+    "midnight": {
+      "background": "radial-gradient(ellipse at 50% 0%, #444444 0%, #000000 50%, #000000 100%)",
+      "overlay": "rgba(0, 0, 0, 0.4)",
+      "accent": "147, 112, 219",
+      "accentHover": "180, 150, 240",
+      "tag": "120, 100, 180",
+      "navHover": "147, 112, 219",
+      "wip": "255, 180, 80",
+      "glow": "147, 112, 219",
+      "surface": "10, 10, 20"
+    },
+    "universe": {
+      "background": "radial-gradient(circle at 25% 30%, #7b2cbf 0%, transparent 42%), radial-gradient(circle at 78% 68%, #4361ee 0%, transparent 38%), radial-gradient(circle at 55% 45%, #f72585 0%, transparent 28%), radial-gradient(ellipse at center, #1a0533 0%, #0d0221 42%, #030008 72%, #000000 100%)",
+      "overlay": "rgba(26, 5, 46, 0.45)",
+      "accent": "199, 125, 255",
+      "accentHover": "232, 196, 255",
+      "tag": "114, 176, 255",
+      "navHover": "255, 126, 200",
+      "wip": "255, 200, 120",
+      "glow": "157, 78, 221",
+      "surface": "8, 3, 18"
+    },
+    "cookie": {
+      "background": "radial-gradient(circle at 35% 25%, #fff8ef 0%, #f5e6d3 38%, #e8d4bc 68%, #c4a882 100%)",
+      "overlay": "rgba(92, 64, 51, 0.06)",
+      "accent": "101, 67, 33",
+      "accentHover": "139, 90, 60",
+      "tag": "160, 110, 70",
+      "navHover": "78, 52, 38",
+      "wip": "180, 100, 50",
+      "glow": "196, 168, 130",
+      "surface": "255, 250, 242",
+      "text": "62, 42, 30"
+    }
+  },
   "meta": {
     "archiveLabel": "field log / archive",
     "intro": "entries logged across creative coding, interaction design, and experimental web."
@@ -15,53 +85,128 @@
     {
       "slug": "telegraphy",
       "title": "Telegraphy",
+      "theme": "black",
       "date": "2024-11",
       "status": "COMPLETE",
       "category": "Creative Coding",
       "description": "A morse-code typing interface that turns typed phrases into morse code — part study in signal encoding, part love letter to early telecommunications.",
-      "tags": ["#JavaScript", "#Audio", "#Encoding"],
+      "tags": ["#JavaScript", "#FramerMotion", "#React", "#Encoding" ],
       "thumbnail": "photocards/telegraphy.png",
       "externalUrl": "https://codesandbox.io/p/github/samudraam/morsecode/main",
       "mediaCount": 3,
       "media": {
         "videos": [
           {
-            "src": "wave.mp4",
-            "poster": "photocards/telegraphy.png",
-            "caption": "Signal pulse visualization during live transmission."
+            "src": "videos_n_shii/transform.mp4",
+            "poster": "videos_n_shii/telegraph_alpha.jpg",
+            "caption":  "Alphabet transformation to morse code made with Framer Motion."
           }
         ],
         "images": [
           {
-            "src": "photocards/telegraphy.png",
-            "alt": "Telegraphy interface screenshot",
-            "caption": "The transmission panel with morse output display."
-          },
-          {
-            "src": "photocards/grain.gif",
-            "alt": "CRT grain texture overlay",
-            "caption": "Grain overlay applied to mimic vintage display hardware."
+            "src": "videos_n_shii/telegraph_alpha.jpg",
+            "alt": "Telegraphy interface screenshot"          
           }
         ]
       },
       "notes": [
         {
           "heading": "Concept",
-          "body": "I wanted to explore how information compresses into rhythm. Morse code felt like the perfect bridge between language and pattern — something humans can both read and feel."
+          "body":  "Assigned with making a dynamic fontface for a design project in college, I designed a fontface that morse codes the alphabet."
         },
         {
           "heading": "Process",
-          "body": "Built with vanilla JavaScript and the Web Audio API. Each character maps to a frequency-duration pair. The visual layer uses canvas to draw pulse waves that sync with audio output."
+          "body": "Uses react and framer motion to animate the morse code transformation. Each character was individually designed and animated to morph from a letter to its morse code representation."
         },
         {
           "heading": "Reflection",
-          "body": "This project reminded me that constraints breed creativity. Limiting the alphabet to dots and dashes forced me to think about timing, silence, and the space between signals."
+          "body": "This project reminded me that constraints breed creativity. Limiting the alphabet to dots and dashes forced me to think about timing, silence, and the space between signals. I also learned a lot about hireachies of components in react."
+        }
+      ]
+    },
+    {
+      "slug": "washu-dining-tracker",
+      "title": "WashU Dining Tracker",
+      "theme": "cookie",
+      "date": "2024-11",
+      "status": "Live",
+      "category": "Full Stack / AI",
+      "description": "A live nutrition tracker for WashU dining halls — built on a custom ETL pipeline that extracts menu data from PDFs using the Anthropic API, transforms it into structured JSON, and serves it from Firebase Firestore.",
+      "tags": [
+        "#React",
+        "#Firebase",
+        "#SwiftUI",
+        "#UI/UX Design",
+        "#AnthropicAPI",
+        "#ETL",
+        "#NutritionData"
+      ],
+      "thumbnail": "photocards/washu-dining.png",
+      "externalUrl": "",
+      "mediaCount": 3,
+      "media": {
+        "videos": [],
+        "images": [
+          {
+            "src": "videos_n_shii/Screens_BearBites/Sim1.png",
+            "alt": "Log In Page",
+            "caption": "Use google authentication to log in to the app. Logo and UI designed by me."
+          },
+          {
+            "src": "videos_n_shii/Screens_BearBites/sim2.png",
+            "alt": "Walkthrough and guided sign up process.",
+            "caption": "User walkthrough and guided sign up process."
+          },
+          {
+            "src": "videos_n_shii/Screens_BearBites/Sim3.png",
+            "alt": "Dashboard with search and filter options.",
+            "caption": "Dashboard with search and filter options."
+          },
+          {
+            "src": "videos_n_shii/Screens_BearBites/sim4.png",
+            "alt": "Welcome screen with user's name and meal history, dollars spent, and calories burned.",
+            "caption": "Welcome screen with user's name and profile picture."
+          },
+          {
+            "src": "videos_n_shii/Screens_BearBites/sim5.png",
+            "alt": "Macro breakdown of a meal.",
+            "caption": "Macro breakdown of a meal."
+          },
+          {
+            "src": "videos_n_shii/Screens_BearBites/sim6.png",
+            "alt": "Macro breakdown of a meal.",
+            "caption": "Macro breakdown of a meal."
+          },
+          {
+            "src": "videos_n_shii/Screens_BearBites/schema.jpg",
+            "alt": "ETL pipeline diagram",
+            "caption": "PDF → Anthropic API → JSON schema → Firestore pipeline."
+          }
+        ]
+      },
+      "notes": [
+        {
+          "heading": "Problem",
+          "body": "WashU dining menus are published as PDFs — no API, no structured data, no way to search by nutrition. Students with dietary restrictions had to manually scan through pages of text."
+        },
+        {
+          "heading": "Pipeline",
+          "body": "I used the Anthropic API to extract and normalize menu data from unstructured PDFs across six restaurants: Beast BBQ, Collins Farms, Corner 17, and others. Each item was mapped to a consistent JSON schema (calories, macros, allergens, dining location, meal period) before uploading to Firebase Firestore."
+        },
+        {
+          "heading": "Front end",
+          "body": "Built a React interface with real-time search, macro filtering, and per-restaurant views. Firestore's real-time listeners mean the UI updates whenever menus change — no manual refresh."
+        },
+        {
+          "heading": "What I learned",
+          "body": "LLM extraction is powerful but non-deterministic. I added a validation layer that checks extracted items against a schema and flags anomalies before they hit the database. Prompt engineering for structured output is genuinely its own skill."
         }
       ]
     },
     {
       "slug": "self-scroller",
       "title": "Self-Scroller",
+      "theme": "universe",
       "date": "2024-09",
       "status": "COMPLETE",
       "category": "Interaction Design",
@@ -94,27 +239,31 @@
     {
       "slug": "revride",
       "title": "RevRide",
+      "theme": "midnight",
       "date": "2024-05",
-      "status": "COMPLETE",
+      "status": "LIVE",
       "category": "Game Dev",
-      "description": "A browser-based racing prototype with procedural track generation and synthwave visuals — built as a final project exploring real-time rendering on the web.",
-      "tags": ["#WebGL", "#Three.js", "#Game"],
+      "description": "A fictional motorcyle rental website built with react.",
+      "tags": ["#React", "#UI/UX Design", "#HTML", "#CSS"],
       "thumbnail": "photocards/revride.png",
       "externalUrl": "https://cse204-2024.github.io/10-final-project-samudraam/",
       "mediaCount": 4,
       "media": {
-        "videos": [
-          {
-            "src": "wave.mp4",
-            "poster": "photocards/revride.png",
-            "caption": "Gameplay loop — track generation and speed mechanics."
-          }
-        ],
         "images": [
           {
-            "src": "photocards/revride.png",
-            "alt": "RevRide gameplay screenshot",
+            "src": "videos_n_shii/Screens_RevRide/bikes.jpg",
+            "alt": "Bikes page with search and filter options.",
             "caption": "Neon track environment with speed HUD overlay."
+          },
+          {
+            "src": "videos_n_shii/Screens_RevRide/home.jpg",
+            "alt": "Home page with navigation and search options.",
+            "caption": "Home page with navigation and search options."
+          },
+          {
+            "src": "videos_n_shii/Screens_RevRide/rent.jpg",
+            "alt": "Rental page with bike selection and booking options.",
+            "caption": "Rental page with bike selection and booking options."
           }
         ]
       },
@@ -126,38 +275,6 @@
         {
           "heading": "Technical Notes",
           "body": "Procedural track segments are assembled from prefab curves. Collision detection runs on a simplified mesh to avoid frame drops on lower-end laptops."
-        }
-      ]
-    },
-    {
-      "slug": "igor",
-      "title": "Igor",
-      "date": "2024-03",
-      "status": "WIP",
-      "category": "Creative Coding",
-      "description": "An experimental character study rendered through layered shader passes — exploring identity as something that shifts under different light conditions.",
-      "tags": ["#Shaders", "#GLSL", "#Portrait"],
-      "thumbnail": "photocards/igor.png",
-      "externalUrl": "",
-      "mediaCount": 2,
-      "media": {
-        "videos": [],
-        "images": [
-          {
-            "src": "photocards/igor.png",
-            "alt": "Igor character render",
-            "caption": "Primary portrait pass with chromatic aberration."
-          }
-        ]
-      },
-      "notes": [
-        {
-          "heading": "Concept",
-          "body": "Igor is named after the lab assistant trope — the figure behind the experiment. Here, the experiment is portraiture itself: how much can you distort a face before it stops feeling human?"
-        },
-        {
-          "heading": "Status",
-          "body": "Still iterating on the displacement maps. Planning to add audio-reactive distortion tied to ambient input."
         }
       ]
     },
@@ -190,34 +307,6 @@
         {
           "heading": "Collaboration",
           "body": "Co-developed with Team PLC. I handled level design and UI; my teammate built the gate logic engine in 48 hours."
-        }
-      ]
-    },
-    {
-      "slug": "enzio-ware-archive",
-      "title": "Enzio Ware Archive",
-      "date": "2023-10",
-      "status": "COMPLETE",
-      "category": "Game Dev",
-      "description": "A narrative archive game where players restore corrupted memory files from a defunct software company — part visual novel, part file-system simulator.",
-      "tags": ["#Narrative", "#Retro", "#UI"],
-      "thumbnail": "photocards/PLC2.png",
-      "externalUrl": "https://teamplc.itch.io/enzio-ware-archive",
-      "mediaCount": 5,
-      "media": {
-        "videos": [],
-        "images": [
-          {
-            "src": "photocards/PLC2.png",
-            "alt": "Enzio Ware file browser interface",
-            "caption": "Archive browser with corrupted file tree."
-          }
-        ]
-      },
-      "notes": [
-        {
-          "heading": "Concept",
-          "body": "Inspired by early 2000s shareware aesthetics. The UI is the story — every dialog box and error message reveals lore about the company that built it."
         }
       ]
     },

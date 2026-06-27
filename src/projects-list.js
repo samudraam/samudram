@@ -1,4 +1,5 @@
 import projectsData from "./data/projects.json";
+import { initTheme } from "./apply-theme.js";
 
 /** @type {string} */
 let activeCategory = "All";
@@ -109,6 +110,12 @@ const renderProjectList = (listEl) => {
  * Initializes the field-log projects archive page.
  */
 const initProjectsList = () => {
+  initTheme(
+    projectsData.themes,
+    projectsData.defaultTheme,
+    projectsData.defaultTheme
+  );
+
   const countEl = document.getElementById("archive-count");
   const filterBar = document.getElementById("filter-bar");
   const projectList = document.getElementById("project-list");
