@@ -1,0 +1,99 @@
+/**
+ * Shared pill navigation — pixel-based sizing so it stays consistent
+ * regardless of each page's root font-size (home uses 24px, others 16px).
+ */
+@view-transition {
+  navigation: auto;
+}
+
+:root {
+  --nav-link-size: 14px;
+  --nav-gap: 72px;
+  --nav-pad-y: 16px;
+  --nav-pad-x: 80px;
+  --nav-top: 32px;
+  --nav-radius: 18px;
+}
+
+.pill-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Syne", sans-serif;
+  gap: var(--nav-gap);
+  padding: var(--nav-pad-y) var(--nav-pad-x);
+  position: fixed;
+  top: var(--nav-top);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0);
+  border-radius: var(--nav-radius);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.9px);
+  -webkit-backdrop-filter: blur(3.9px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  view-transition-name: pill-nav;
+  contain: layout;
+}
+
+.pill-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: var(--nav-link-size);
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  transition: color 0.3s ease;
+}
+
+.pill-nav a:hover {
+  color: rgb(var(--theme-nav-hover, 78, 152, 255));
+}
+
+::view-transition-old(pill-nav),
+::view-transition-new(pill-nav) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  height: auto;
+}
+
+::view-transition-old(page-background),
+::view-transition-new(page-background) {
+  animation-duration: 0.35s;
+  animation-timing-function: ease;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-gap: 32px;
+    --nav-pad-y: 14px;
+    --nav-pad-x: 40px;
+    --nav-top: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --nav-gap: 20px;
+    --nav-pad-y: 10px;
+    --nav-pad-x: 32px;
+  }
+
+  .pill-nav {
+    max-width: 90vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+
+  ::view-transition-old(pill-nav),
+  ::view-transition-new(pill-nav),
+  ::view-transition-old(page-background),
+  ::view-transition-new(page-background) {
+    animation: none;
+  }
+}

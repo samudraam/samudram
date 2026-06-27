@@ -4,85 +4,11 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      :not(:defined) {
-        visibility: hidden;
-      }
-
-      video:not(.is-media-ready) {
-        visibility: hidden;
-      }
-    </style>
+    <script src="view-transitions.js"></script>
     <title>Contact - samudraam</title>
-    <link rel="stylesheet" href="src/style.css" />
-    <style>
-      /* Specific styling for contact page with blurred video */
-      .background.blurred video {
-        filter: blur(50px);
-        transform: scale(1.1);
-      }
-
-      .contact-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        width: 100vw;
-        overflow: hidden;
-        position: relative;
-        padding: 2rem;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .contact-content h1 {
-        font-family: "Syne", sans-serif;
-        font-size: 3rem;
-        margin-bottom: 2rem;
-        letter-spacing: 0.1em;
-        text-transform: lowercase;
-        animation: fadeIn 1s ease-out forwards;
-      }
-
-      .contact-content p {
-        font-family: "Syne", sans-serif;
-        font-size: 1.1rem;
-        line-height: 1.8;
-        text-align: center;
-        color: rgba(255, 255, 255, 0.9);
-        animation: fadeIn 1.5s ease-out forwards;
-        animation-delay: 0.3s;
-        opacity: 0;
-      }
-
-      .contact-content a {
-        color: #ffffff;
-        text-decoration: none;
-        transition: color 0.3s ease;
-      }
-
-      .contact-content a:hover {
-        color: #99dfff;
-        text-decoration: underline;
-      }
-
-      @media (max-width: 768px) {
-        .contact-content {
-          padding: 1rem;
-        }
-
-        .contact-content h1 {
-          font-size: 2rem;
-        }
-
-        .contact-content p {
-          font-size: 1rem;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="src/contact.css" />
   </head>
-  <body class="is-loading">
+  <body class="is-loading contact-page">
     <div
       class="frost-loader"
       id="frost-loader"
@@ -101,17 +27,53 @@
     <div class="background blurred">
       <video autoplay muted loop src="wave.mp4"></video>
     </div>
-    <div class="contact-content">
+    <main class="contact-content">
       <h1>contact</h1>
-      <p>
-        Please email me at
-        <a href="mailto:r.samudrala234@gmail.com">r.samudrala234@gmail.com</a>
-        for further inquiries.
-        <a href="https://www.linkedin.com/in/ramya-samudrala-bb9172266/">LinkedIn</a>
-        <a href="https://github.com/samudraam">GitHub</a>
+      <p class="contact-intro">
+        For inquiries, reach out via email or connect on social.
       </p>
-    </div>
+      <div class="contact-actions">
+        <button
+          type="button"
+          class="contact-btn"
+          id="contact-copy-email"
+          aria-label="Copy email address to clipboard"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="M3 7l9 6 9-6" />
+          </svg>
+          <span class="contact-btn__label">email</span>
+          <span class="contact-btn__feedback" id="contact-copy-feedback" aria-live="polite"></span>
+        </button>
+        <a
+          class="contact-btn"
+          href="https://www.linkedin.com/in/ramya-samudrala-bb9172266/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn profile (opens in new tab)"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V23.5h-4V8.5zM8.5 8.5h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.09v8.91h-4v-7.9c0-1.88-.03-4.3-2.62-4.3-2.62 0-3.02 2.05-3.02 4.16v8.04h-4V8.5z" />
+          </svg>
+          <span class="contact-btn__label">linkedin</span>
+        </a>
+        <a
+          class="contact-btn"
+          href="https://github.com/samudraam"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile (opens in new tab)"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.29-1.71-1.29-1.71-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.74-1.56-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.41-5.27 5.69.42.36.79 1.07.79 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.68.8.56A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+          </svg>
+          <span class="contact-btn__label">github</span>
+        </a>
+      </div>
+    </main>
     <script type="module" src="src/media-ready.js"></script>
     <script type="module" src="src/loader.js"></script>
+    <script type="module" src="src/contact.js"></script>
   </body>
 </html>

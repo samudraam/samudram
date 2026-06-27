@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap");
 @import "./loader.css";
+@import "./pill-nav.css";
 
 :not(:defined) {
   visibility: hidden;
@@ -33,6 +34,8 @@ html {
   height: 100vh;
   z-index: -1;
   overflow: hidden;
+  view-transition-name: page-background;
+  contain: layout;
 }
 
 .background::after {
@@ -81,67 +84,6 @@ h1.distressed {
     text-shadow:
       0 0 20px #ffffff,
       0 0 10px #939393;
-  }
-}
-
-.pill-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Syne", sans-serif;
-  gap: 4rem;
-  padding: 0.75rem 4rem;
-  position: absolute;
-  top: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  /* From https://css.glass */
-  background: rgba(255, 255, 255, 0);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(3.9px);
-  -webkit-backdrop-filter: blur(3.9px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.pill-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: lowercase;
-  transition: color 0.3s ease;
-}
-
-.pill-nav a:hover {
-  color: #4e98ff;
-}
-
-/* Responsive design for tablets and mobile devices */
-@media (max-width: 768px) {
-  .pill-nav {
-    gap: 1.5rem;
-    padding: 0.75rem 2rem;
-    top: 1rem;
-  }
-
-  .pill-nav a {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .pill-nav {
-    gap: 1rem;
-    padding: 0.5rem 1.5rem;
-    top: 1rem;
-    width: auto;
-    max-width: 90vw;
-  }
-
-  .pill-nav a {
-    font-size: 0.9rem;
   }
 }
 

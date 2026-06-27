@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Syne:wght@400..800&display=swap");
 @import "./loader.css";
+@import "./pill-nav.css";
 
 /**
  * Theme tokens — override via JS (apply-theme.js) or data-theme presets below.
@@ -283,53 +284,4 @@ body::after {
     transparent 3px
   );
   opacity: 0.35;
-}
-
-.pill-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Syne", sans-serif;
-  gap: 4rem;
-  padding: 0.75rem 4rem;
-  position: fixed;
-  top: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  background: rgba(255, 255, 255, 0);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(3.9px);
-  -webkit-backdrop-filter: blur(3.9px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.pill-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: lowercase;
-  transition: color 0.3s ease;
-}
-
-.pill-nav a:hover {
-  color: rgb(var(--theme-nav-hover));
-}
-
-@media (max-width: 768px) {
-  .pill-nav {
-    gap: 1.5rem;
-    padding: 0.75rem 2rem;
-    top: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .pill-nav {
-    gap: 1rem;
-    padding: 0.5rem 1.5rem;
-    max-width: 90vw;
-  }
 }
