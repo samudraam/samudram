@@ -152,6 +152,60 @@
   mix-blend-mode: multiply;
 }
 
+[data-theme="playground"] {
+  --theme-bg: linear-gradient(
+    180deg,
+    #7eb8da 0%,
+    #b8dcf0 14%,
+    #eef6fb 36%,
+    #e4eed9 56%,
+    #8fbf72 76%,
+    #4d7a42 100%
+  );
+  --theme-overlay: rgba(255, 255, 255, 0.18);
+  --theme-accent: 52, 108, 72;
+  --theme-accent-hover: 76, 136, 96;
+  --theme-tag: 88, 118, 98;
+  --theme-nav-hover: 48, 108, 158;
+  --theme-wip: 196, 128, 58;
+  --theme-glow: 130, 195, 225;
+  --theme-surface: 255, 255, 255;
+  --theme-text: 22, 30, 26;
+}
+
+[data-theme="playground"] .archive-header h1,
+[data-theme="playground"] .project-entry__title,
+[data-theme="playground"] .project-detail__title {
+  color: rgb(22, 30, 26);
+  text-shadow: 0 0 40px rgba(var(--theme-glow), 0.45);
+}
+
+[data-theme="playground"] .pill-nav {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(22, 30, 26, 0.12);
+  box-shadow: 0 4px 24px rgba(48, 108, 72, 0.1);
+}
+
+[data-theme="playground"] .pill-nav a {
+  color: rgb(22, 30, 26);
+}
+
+[data-theme="playground"] .grain-overlay {
+  opacity: 0.03;
+  mix-blend-mode: multiply;
+}
+
+[data-theme="playground"] .scanlines {
+  opacity: 0.08;
+}
+
+[data-theme="playground"] .glass-surface {
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(22, 30, 26, 0.1);
+  box-shadow: 0 8px 32px rgba(48, 108, 72, 0.08),
+    inset 0 1px rgba(255, 255, 255, 0.6);
+}
+
 :not(:defined) {
   visibility: hidden;
 }

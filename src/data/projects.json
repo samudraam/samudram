@@ -78,6 +78,18 @@
       "glow": "196, 168, 130",
       "surface": "255, 250, 242",
       "text": "62, 42, 30"
+    },
+    "playground": {
+      "background": "linear-gradient(180deg, #7eb8da 0%, #b8dcf0 14%, #eef6fb 36%, #e4eed9 56%, #8fbf72 76%, #4d7a42 100%)",
+      "overlay": "rgba(255, 255, 255, 0.18)",
+      "accent": "52, 108, 72",
+      "accentHover": "76, 136, 96",
+      "tag": "88, 118, 98",
+      "navHover": "48, 108, 158",
+      "wip": "196, 128, 58",
+      "glow": "130, 195, 225",
+      "surface": "255, 255, 255",
+      "text": "22, 30, 26"
     }
   },
   "meta": {
@@ -88,10 +100,67 @@
     "All",
     "Creative Coding",
     "Interaction Design",
-    "Game Dev",
-    "Full Stack / AI"
+    "App Development",
+    "Full Stack",
+    "Data Visualization"
   ],
   "projects": [
+    {
+      "slug": "pollutant-playground",
+      "title": "Pollutant Playground",
+      "theme": "playground",
+      "date": "2025-12",
+      "status": "Complete",
+      "category": "Data Visualization",
+      "description": "An educational interactive experience about the air you breathe — combining WebGL particle systems, real-time air quality data, and p5.js visualizations to make invisible pollutants tangible.",
+      "tags": ["#React", "#TypeScript", "#WebGL", "#p5js", "#DataViz", "#EnvironmentalDesign"],
+      "thumbnail": "photocards/pollutant-playground.png",
+      "externalUrl": "https://samudraam.github.io/aqi-pj3/#/",
+      "mediaCount": 3,
+      "media": {
+        "videos": [
+          {
+            "src": "videos_n_shii/playground.mp4",
+            "alt": "Pollutant Playground interactive demo",
+            "caption": "User exploring pollutant types through the WebGL particle environment."
+          }
+        ],
+        "images": [
+          {
+            "src": "videos_n_shii/micro_view.jpg",
+            "alt": "What's in your air? Particle view",
+            "caption": "Particle view of the pollutant playground."
+          },
+          {
+            "src": "videos_n_shii/particle.jpg",
+            "alt": "Educational visualization of Nitrogen Dioxide behavior in a simulated air column.",
+            "caption": "Educational visualization of Nitrogen Dioxide."
+          }
+        ]
+      },
+      "notes": [
+        {
+          "heading": "Concept",
+          "body": "Air pollution is invisible — and that invisibility is part of why it's underestimated. Pollutant Playground asks 'What's in your air?' and answers it visually, turning abstract AQI numbers and chemical names into something you can explore and feel. Built collaboratively with Natalie and Christine."
+        },
+        {
+          "heading": "Technical stack",
+          "body": "The core environment is built in React with TypeScript for type-safe data handling across API responses and component state. WebGL handles the particle simulation layer — each pollutant class has its own shader behavior (density, drift, scatter radius). p5.js sits on top for the more illustrative, hand-drawn educational overlays where raw WebGL would be overkill."
+        },
+        {
+          "heading": "Why three rendering layers",
+          "body": "WebGL, p5.js, and React DOM serve different purposes here. WebGL gives us real-time particle physics at scale — you can't simulate thousands of PM2.5 particles in Canvas 2D without dropping frames. p5.js is better for the organic, sketch-like educational diagrams. React manages the UI layer and data flow between them. Keeping the layers explicit made collaboration across three people much cleaner."
+        },
+        {
+          "heading": "Design challenge",
+          "body": "The hardest design problem was calibrating density — making the simulation feel alarming without being paralyzing. Early prototypes were too chaotic; users felt helpless rather than informed. We pulled back particle counts and added structured 'learn more' moments so the experience had a clear educational arc, not just visual noise."
+        },
+        {
+          "heading": "Collaboration",
+          "body": "Ramya handled the WebGL shader system and React/TypeScript architecture. Natalie and Christine contributed to the p5.js educational visualizations and content design. We used a shared component library and agreed on a data schema early so the API layer could be swapped without breaking the visual layer."
+        }
+      ]
+    },
     {
       "slug": "telegraphy",
       "title": "Telegraphy",
@@ -114,8 +183,17 @@
         ],
         "images": [
           {
+            "src": "videos_n_shii/telegraph_tmb.jpg",
+            "alt": "Telegraphy logo",
+            "caption": "Logo of telegraphy fontface."
+          },
+          {
             "src": "videos_n_shii/telegraph_alpha.jpg",
             "alt": "Telegraphy interface screenshot"          
+          },{
+            "src": "videos_n_shii/morse.jpg",
+            "alt": "Morse code alphabet",
+            "caption": "Morse code alphabet."
           }
         ]
       },
@@ -227,7 +305,10 @@
       "mediaCount": 2,
       "media": {
         "videos": [
-
+          {
+            "src": "videos_n_shii/scroller.mp4",
+            "caption": "A recording of the scrolling page."
+          }
         ],
         "images": [
           {
@@ -240,7 +321,7 @@
       "notes": [
         {
           "heading": "Concept",
-          "body": "What if a portfolio didn't wait for you to scroll? Self-Scroller treats the page as a slow film reel — the viewer becomes a passenger rather than a navigator."
+          "body": "What is the self? What happens to that self we die? Scrolling through this page is a reminder of the ephemeral but conflictingly infinite nature of our existence personified from Mike Flanagan's show 'Midnight Mass'."
         },
         {
           "heading": "Process",
@@ -308,18 +389,14 @@
           {
             "src": "photocards/nitelife.png",
             "alt": "Nitelife gallery grid view",
-            "caption": "Gallery index sorted by warm/cool color bands."
+            "caption": "Gallery of low-light photos."
           }
         ]
       },
       "notes": [
         {
           "heading": "Concept",
-          "body": "Most photo galleries default to white backgrounds. Nitelife inverts that — the UI recedes so the images feel like they emit their own light."
-        },
-        {
-          "heading": "Process",
-          "body": "Images are tagged with dominant hue values extracted via canvas sampling. The sort algorithm groups photos into temperature bands at runtime."
+          "body": "Coding project for a class in web development that is a simple gallery of photos which uses javascript and html to display the photos."
         }
       ]
     }
