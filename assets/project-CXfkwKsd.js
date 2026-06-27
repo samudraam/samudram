@@ -1,4 +1,4 @@
-import"./loader-C5IFBMMi.js";import{p as g,i as y}from"./apply-theme-BFTDiRWQ.js";let l=null,c=0,i=[],p=null,h=!1;const d=()=>(l instanceof HTMLElement||(l=document.createElement("div"),l.className="gallery-lightbox",l.id="gallery-lightbox",l.setAttribute("role","dialog"),l.setAttribute("aria-modal","true"),l.setAttribute("aria-label","Image gallery"),l.setAttribute("aria-hidden","true"),l.hidden=!0,l.innerHTML=`
+import"./loader-C5IFBMMi.js";import{p as g,i as y}from"./apply-theme-Cy1iQ0I5.js";let l=null,c=0,i=[],p=null,h=!1;const d=()=>(l instanceof HTMLElement||(l=document.createElement("div"),l.className="gallery-lightbox",l.id="gallery-lightbox",l.setAttribute("role","dialog"),l.setAttribute("aria-modal","true"),l.setAttribute("aria-label","Image gallery"),l.setAttribute("aria-hidden","true"),l.hidden=!0,l.innerHTML=`
     <div class="gallery-lightbox__backdrop" data-action="close"></div>
     <div class="gallery-lightbox__panel glass-surface">
       <button
