@@ -1,4 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap");
+@import "./loader.css";
+
+:not(:defined) {
+  visibility: hidden;
+}
+
+video:not(.is-media-ready) {
+  visibility: hidden;
+}
 
 @font-face {
   font-family: "broken";
