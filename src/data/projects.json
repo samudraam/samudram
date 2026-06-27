@@ -34,16 +34,27 @@
       "glow": "255, 255, 255",
       "surface": "0, 0, 0"
     },
-    "midnight": {
-      "background": "radial-gradient(ellipse at 50% 0%, #444444 0%, #000000 50%, #000000 100%)",
-      "overlay": "rgba(0, 0, 0, 0.4)",
-      "accent": "147, 112, 219",
-      "accentHover": "180, 150, 240",
-      "tag": "120, 100, 180",
-      "navHover": "147, 112, 219",
+    "industrial": {
+      "background": "radial-gradient(ellipse at 50% 0%, #4a3530 0%, #1e1c1a 45%, #0a0a0a 100%)",
+      "overlay": "rgba(20, 15, 12, 0.45)",
+      "accent": "185, 84, 63",
+      "accentHover": "212, 113, 90",
+      "tag": "140, 95, 80",
+      "navHover": "185, 84, 63",
       "wip": "255, 180, 80",
-      "glow": "147, 112, 219",
-      "surface": "10, 10, 20"
+      "glow": "185, 84, 63",
+      "surface": "18, 16, 14"
+    },
+    "cyberpunk": {
+      "background": "radial-gradient(circle at 28% 12%, rgba(0, 220, 210, 0.38) 0%, transparent 50%), radial-gradient(circle at 72% 88%, rgba(0, 190, 180, 0.22) 0%, transparent 45%), radial-gradient(ellipse at center, #021818 0%, #000000 65%, #000000 100%)",
+      "overlay": "rgba(0, 0, 0, 0.1)",
+      "accent": "191, 64, 255",
+      "accentHover": "220, 150, 255",
+      "tag": "168, 100, 255",
+      "navHover": "191, 64, 255",
+      "wip": "255, 234, 0",
+      "glow": "176, 38, 255",
+      "surface": "0, 0, 0"
     },
     "universe": {
       "background": "radial-gradient(circle at 25% 30%, #7b2cbf 0%, transparent 42%), radial-gradient(circle at 78% 68%, #4361ee 0%, transparent 38%), radial-gradient(circle at 55% 45%, #f72585 0%, transparent 28%), radial-gradient(ellipse at center, #1a0533 0%, #0d0221 42%, #030008 72%, #000000 100%)",
@@ -78,8 +89,7 @@
     "Creative Coding",
     "Interaction Design",
     "Game Dev",
-    "Photography App",
-    "Prototype"
+    "Full Stack / AI"
   ],
   "projects": [
     {
@@ -128,8 +138,8 @@
       "slug": "washu-dining-tracker",
       "title": "WashU Dining Tracker",
       "theme": "cookie",
-      "date": "2024-11",
-      "status": "Live",
+      "date": "2026-04",
+      "status": "COMPLETE",
       "category": "Full Stack / AI",
       "description": "A live nutrition tracker for WashU dining halls — built on a custom ETL pipeline that extracts menu data from PDFs using the Anthropic API, transforms it into structured JSON, and serves it from Firebase Firestore.",
       "tags": [
@@ -141,7 +151,7 @@
         "#ETL",
         "#NutritionData"
       ],
-      "thumbnail": "photocards/washu-dining.png",
+      "thumbnail": "videos_n_shii/Screens_BearBites/Sim3.png",
       "externalUrl": "",
       "mediaCount": 3,
       "media": {
@@ -153,7 +163,7 @@
             "caption": "Use google authentication to log in to the app. Logo and UI designed by me."
           },
           {
-            "src": "videos_n_shii/Screens_BearBites/sim2.png",
+            "src": "videos_n_shii/Screens_BearBites/Sim2.png",
             "alt": "Walkthrough and guided sign up process.",
             "caption": "User walkthrough and guided sign up process."
           },
@@ -187,7 +197,7 @@
       "notes": [
         {
           "heading": "Problem",
-          "body": "WashU dining menus are published as PDFs — no API, no structured data, no way to search by nutrition. Students with dietary restrictions had to manually scan through pages of text."
+          "body": "WashU dining menus are published as PDFs — no API, no structured data, no way to search by nutrition. Students with dietary restrictions had to manually scan through pages of text. As a vegetarian, I wanted to be able to easily find vegetarian options and track my calories and macros. My groupmates had similar needs."
         },
         {
           "heading": "Pipeline",
@@ -195,11 +205,11 @@
         },
         {
           "heading": "Front end",
-          "body": "Built a React interface with real-time search, macro filtering, and per-restaurant views. Firestore's real-time listeners mean the UI updates whenever menus change — no manual refresh."
+          "body": "Built a swiftui interface with real-time search, macro filtering, and per-restaurant views. Firestore's real-time listeners mean the UI updates whenever menus change — no manual refresh."
         },
         {
           "heading": "What I learned",
-          "body": "LLM extraction is powerful but non-deterministic. I added a validation layer that checks extracted items against a schema and flags anomalies before they hit the database. Prompt engineering for structured output is genuinely its own skill."
+          "body": "Views in swiftui are very interesting. They are very similar to react components, but they are more flexible and can be used to create more complex UI. I also learned a lot about mobile app development and the challenges of building a user-friendly app with a small team."
         }
       ]
     },
@@ -210,13 +220,15 @@
       "date": "2024-09",
       "status": "COMPLETE",
       "category": "Interaction Design",
-      "description": "An auto-scrolling personal narrative page that drifts through fragments of biography, photos, and ambient sound — scrolling as storytelling.",
-      "tags": ["#Scroll", "#Narrative", "#CSS"],
+      "description": "A scrolling personal narrative page that uses scrolling as storytelling. Sourced from a monologue in Mike Flanagan's show 'Midnight Mass'. Spoilers ahead!",
+      "tags": ["#Scroll", "#Narrative", "#CSS", "#MikeFlanagan", "#MidnightMass"],
       "thumbnail": "photocards/self.png",
       "externalUrl": "https://glistening-donut-59ee02.netlify.app/",
       "mediaCount": 2,
       "media": {
-        "videos": [],
+        "videos": [
+
+        ],
         "images": [
           {
             "src": "photocards/self.png",
@@ -239,10 +251,10 @@
     {
       "slug": "revride",
       "title": "RevRide",
-      "theme": "midnight",
+      "theme": "industrial",
       "date": "2024-05",
       "status": "LIVE",
-      "category": "Game Dev",
+      "category": "Creative Coding",
       "description": "A fictional motorcyle rental website built with react.",
       "tags": ["#React", "#UI/UX Design", "#HTML", "#CSS"],
       "thumbnail": "photocards/revride.png",
@@ -251,17 +263,17 @@
       "media": {
         "images": [
           {
-            "src": "videos_n_shii/Screens_RevRide/bikes.jpg",
+            "src": "videos_n_shii/Screens_Revride/bikes.jpg",
             "alt": "Bikes page with search and filter options.",
-            "caption": "Neon track environment with speed HUD overlay."
+            "caption": "Bikes page... with a lot of bikes."
           },
           {
-            "src": "videos_n_shii/Screens_RevRide/home.jpg",
+            "src": "videos_n_shii/Screens_Revride/home.jpg",
             "alt": "Home page with navigation and search options.",
-            "caption": "Home page with navigation and search options."
+            "caption": "Home page with a carousel of images."
           },
           {
-            "src": "videos_n_shii/Screens_RevRide/rent.jpg",
+            "src": "videos_n_shii/Screens_Revride/rent.jpg",
             "alt": "Rental page with bike selection and booking options.",
             "caption": "Rental page with bike selection and booking options."
           }
@@ -270,21 +282,21 @@
       "notes": [
         {
           "heading": "Concept",
-          "body": "RevRide started as a question: can a semester-long web project feel like an arcade cabinet? I leaned into neon palettes and low-poly geometry to keep performance smooth in-browser."
+          "body": "RevRide is a fictional motorcycle rental website built with react. I wanted to create a website that was fun and engaging to use and combine my love for motorcycles and web development."
         },
         {
-          "heading": "Technical Notes",
-          "body": "Procedural track segments are assembled from prefab curves. Collision detection runs on a simplified mesh to avoid frame drops on lower-end laptops."
+          "heading": "What I learned",
+          "body": "I learned a lot about react components and how to use them to create a simple yet organized website."
         }
       ]
     },
     {
       "slug": "nitelife",
       "title": "Nitelife Gallery",
-      "theme": "",
+      "theme": "cyberpunk",
       "date": "2024-02",
       "status": "COMPLETE",
-      "category": "Gallery App",
+      "category": "Creative Coding",
       "description": "A nocturnal photo gallery built with plain html, css, and javascript to showcase low-light photography as its own visual language.",
       "tags": ["#HTML", "#CSS", "#JavaScript"],
       "thumbnail": "photocards/nitelife.png",
@@ -308,126 +320,6 @@
         {
           "heading": "Process",
           "body": "Images are tagged with dominant hue values extracted via canvas sampling. The sort algorithm groups photos into temperature bands at runtime."
-        }
-      ]
-    },
-    {
-      "slug": "crossfire",
-      "title": "Crossfire Prototype",
-      "date": "2024-06",
-      "status": "COMPLETE",
-      "category": "Prototype",
-      "description": "An interactive Figma prototype for a multiplayer strategy interface — exploring how players manage concurrent actions under time pressure.",
-      "tags": ["#Figma", "#UX", "#Multiplayer"],
-      "thumbnail": "photocards/crossfire.png",
-      "externalUrl": "https://www.figma.com/proto/yUFeEsZhdopigFYgoWaXnD/project-interview?page-id=8%3A2&node-id=8-3&viewport=421%2C345%2C0.28&t=oRUdlEMNPlYzm9VW-1&scaling=scale-down-width&content-scaling=fixed",
-      "mediaCount": 2,
-      "media": {
-        "videos": [],
-        "images": [
-          {
-            "src": "photocards/crossfire.png",
-            "alt": "Crossfire prototype main screen",
-            "caption": "Primary action panel with concurrent move indicators."
-          }
-        ]
-      },
-      "notes": [
-        {
-          "heading": "Concept",
-          "body": "Designed during a project interview sprint. The core UX challenge was communicating overlapping player intents without overwhelming the screen."
-        }
-      ]
-    },
-    {
-      "slug": "cookbook",
-      "title": "Cookbook Prototype",
-      "date": "2024-04",
-      "status": "COMPLETE",
-      "category": "Prototype",
-      "description": "A tactile recipe app prototype emphasizing hand gestures and step-by-step flow — designed for kitchen contexts where touch targets need to be generous.",
-      "tags": ["#Figma", "#Mobile", "#Food"],
-      "thumbnail": "photocards/cookbook.png",
-      "externalUrl": "https://www.figma.com/proto/6F1arhLeJ4bJ8Gx8FfW7Jn/Ramya-Working-Prototype?page-id=0%3A1&node-id=5-1310&starting-point-node-id=1%3A3&scaling=min-zoom&content-scaling=fixed&t=UgdEotpcBIJZmptO-1",
-      "mediaCount": 3,
-      "media": {
-        "videos": [],
-        "images": [
-          {
-            "src": "photocards/cookbook.png",
-            "alt": "Cookbook app recipe step view",
-            "caption": "Step view with swipe-to-advance interaction pattern."
-          }
-        ]
-      },
-      "notes": [
-        {
-          "heading": "Concept",
-          "body": "Cooking with messy hands means tiny buttons fail. Every interactive element in this prototype is sized for accidental taps and wet fingers."
-        }
-      ]
-    },
-    {
-      "slug": "wave-function",
-      "title": "Wave Function",
-      "date": "2024-11",
-      "status": "COMPLETE",
-      "category": "Creative Coding",
-      "description": "Generative visuals driven by ambient audio input — sine waves stack and interfere to produce ocean-like interference patterns in real time.",
-      "tags": ["#WebGL", "#Audio", "#Generative"],
-      "thumbnail": "photocards/telegraphy.png",
-      "externalUrl": "",
-      "mediaCount": 2,
-      "media": {
-        "videos": [
-          {
-            "src": "wave.mp4",
-            "poster": "photocards/telegraphy.png",
-            "caption": "Live audio-reactive wave interference field."
-          }
-        ],
-        "images": []
-      },
-      "notes": [
-        {
-          "heading": "Concept",
-          "body": "Wave Function treats sound as a physical material. Microphone input modulates amplitude and phase across layered sine functions rendered on canvas."
-        },
-        {
-          "heading": "Process",
-          "body": "Started as a weekend sketch, evolved into a meditative installation piece. The ocean palette emerged naturally from stacking blue-shifted harmonics."
-        }
-      ]
-    },
-    {
-      "slug": "depth-chart",
-      "title": "Depth Chart",
-      "date": "2024-08",
-      "status": "WIP",
-      "category": "Creative Coding",
-      "description": "A sonar-inspired data visualization that maps portfolio metrics as underwater terrain — depth equals time, brightness equals activity.",
-      "tags": ["#D3", "#DataViz", "#Ocean"],
-      "thumbnail": "photocards/nitelife.png",
-      "externalUrl": "",
-      "mediaCount": 1,
-      "media": {
-        "videos": [],
-        "images": [
-          {
-            "src": "photocards/nitelife.png",
-            "alt": "Depth chart terrain visualization",
-            "caption": "Bathymetric-style render of activity over time."
-          }
-        ]
-      },
-      "notes": [
-        {
-          "heading": "Concept",
-          "body": "I wanted a self-reflective viz that felt native to this portfolio's ocean theme. Depth Chart reads like a sonar scan of my own commit history."
-        },
-        {
-          "heading": "Next Steps",
-          "body": "Planning to hook this up to live GitHub data and add ping animations when new activity surfaces."
         }
       ]
     }

@@ -1,8 +1,8 @@
 import { defineConfig } from "vite";
 import { resolve } from "path";
 
-export default defineConfig({
-  base: "",
+export default defineConfig(({ command }) => ({
+  base: command === "build" ? "/samudram/" : "/",
   build: {
     rollupOptions: {
       input: {
@@ -14,4 +14,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));
