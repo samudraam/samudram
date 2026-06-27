@@ -8,68 +8,10 @@
       :not(:defined) {
         visibility: hidden;
       }
-
-      video:not(.is-media-ready) {
-        visibility: hidden;
-      }
     </style>
-    <title>About - samudraam</title>
-    <link rel="stylesheet" href="src/style.css" />
-    <style>
-      /* Specific styling for about page with blurred video */
-      .background.blurred video {
-        filter: blur(50px);
-        transform: scale(1.1);
-      }
-
-      .about-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        width: 100vw;
-        overflow: hidden;
-        position: relative;
-        padding: 2rem;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .about-content h1 {
-        font-family: "Syne", sans-serif;
-        font-size: 3rem;
-        margin-bottom: 2rem;
-        letter-spacing: 0.1em;
-        text-transform: lowercase;
-        animation: fadeIn 1s ease-out forwards;
-      }
-
-      .about-content p {
-        font-family: "Syne", sans-serif;
-        font-size: 1.1rem;
-        line-height: 1.8;
-        text-align: center;
-        color: rgba(255, 255, 255, 0.9);
-        animation: fadeIn 1.5s ease-out forwards;
-        animation-delay: 0.3s;
-        opacity: 0;
-      }
-
-      @media (max-width: 768px) {
-        .about-content {
-          padding: 1rem;
-        }
-
-        .about-content h1 {
-          font-size: 2rem;
-        }
-
-        .about-content p {
-          font-size: 1rem;
-        }
-      }
-    </style>
+    <title>About — samudraam</title>
+    <script type="module" src="src/about-theme.js"></script>
+    <link rel="stylesheet" href="src/about.css" />
   </head>
   <body class="is-loading">
     <div
@@ -80,27 +22,91 @@
       aria-hidden="false"
       aria-label="Loading"
     ></div>
-    <div class="invert-circle"></div>
+    <div class="grain-overlay"></div>
+    <div class="scanlines" aria-hidden="true"></div>
     <nav class="pill-nav">
       <a href="index.html">home</a>
       <a href="about.html">about</a>
       <a href="projects.html">works</a>
       <a href="contact.html">contact</a>
     </nav>
-    <div class="background blurred">
-      <video autoplay muted loop src="wave.mp4"></video>
-    </div>
-    <div class="about-content">
-      <h1>about</h1>
-      <p>
-        Welcome to my portfolio. I'm a developer and designer passionate about
-        building interesting and intuitive digital experiences. This space
-        showcases my journey through design and development. I'm currently a
-        student at Washington University in St. Louis, where I'm pursuing a
-        Bachelor of Science in Computer Science.
-      </p>
-    </div>
-    <script type="module" src="src/media-ready.js"></script>
+    <main class="about-page">
+      <section class="about-profile" aria-label="Profile">
+        <div class="about-profile__frame">
+          <div class="about-profile__glow" aria-hidden="true"></div>
+          <img
+            class="about-profile__photo"
+            src="/videos_n_shii/ramya.jpeg"
+            alt="Portrait of Ramya Samudrala"
+            width="380"
+            height="507"
+          />
+          <div class="about-profile__scanlines" aria-hidden="true"></div>
+          <span
+            class="about-profile__corner about-profile__corner--tl"
+            aria-hidden="true"
+          ></span>
+          <span
+            class="about-profile__corner about-profile__corner--tr"
+            aria-hidden="true"
+          ></span>
+          <span
+            class="about-profile__corner about-profile__corner--bl"
+            aria-hidden="true"
+          ></span>
+          <span
+            class="about-profile__corner about-profile__corner--br"
+            aria-hidden="true"
+          ></span>
+        </div>
+        <p class="about-profile__name">
+          <span aria-hidden="true">▶</span> Ramya Samudrala
+        </p>
+      </section>
+
+      <section class="about-content">
+        <p class="about-breadcrumb">
+          <span class="about-breadcrumb__arrow" aria-hidden="true">▶</span>
+          about / profile
+        </p>
+        <h1>about</h1>
+        <hr class="about-content__divider" />
+        <p class="about-bio">
+          I'm a developer and designer passionate about building interesting, functional, and beautiful digital experiences.
+          This space showcases my journey through design and development.
+        </p>
+
+        <dl class="about-meta">
+          <div class="about-meta__row">
+            <dt class="about-meta__label">role</dt>
+            <dd class="about-meta__value">developer &amp; designer</dd>
+          </div>
+          <div class="about-meta__row">
+            <dt class="about-meta__label">school</dt>
+            <dd class="about-meta__value">
+              Washington University in St. Louis
+            </dd>
+          </div>
+          <div class="about-meta__row">
+            <dt class="about-meta__label">degree</dt>
+            <dd class="about-meta__value">B.S. Computer Science</dd>
+          </div>
+          <div class="about-meta__row">
+            <dt class="about-meta__label">focus</dt>
+            <dd class="about-meta__value">creative coding / app development / web development / microcontrollers</dd>
+          </div>
+          <div class="about-meta__row">
+            <dt class="about-meta__label">status</dt>
+            <dd class="about-meta__value">available for work! contact me if you're interested in working together.</dd>
+          </div>
+        </dl>
+
+        <nav class="about-actions" aria-label="About page links">
+          <a href="projects.html">View works →</a>
+          <a href="contact.html">Contact →</a>
+        </nav>
+      </section>
+    </main>
     <script type="module" src="src/loader.js"></script>
   </body>
 </html>
