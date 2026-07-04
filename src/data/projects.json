@@ -124,7 +124,7 @@
       "date": "2025-10",
       "status": "COMPLETE",
       "category": "Collaborative Web App / Interactive Archive",
-      "description": "A collaborative sky-photo archive created to celebrate the beauty of the sky and transform those submissions into a curated gallery and dynamic visual experience. Created for Bei Hu at WashU.",
+      "description": "A collaborative sky-photo archive created to celebrate the beauty of the sky and transform those submissions into a curated gallery and dynamic visual experience. Created with Bei Hu at WashU.",
       "tags": ["#NextJS", "#React", "#SystemDesign","#TypeScript", "#Firebase", "#FramerMotion", "#Canvas", "#UIUX", "#CollaborativeDesign"],
       "thumbnail": "videos_n_shii/oursky-screens/home.png",
       "externalUrl": "https://oursky.vercel.app/",
