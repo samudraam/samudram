@@ -124,7 +124,7 @@
       "date": "2025-10",
       "status": "COMPLETE",
       "category": "Collaborative Web App / Interactive Archive",
-      "description": "A collaborative sky-photo archive created under Bei Hu’s direction at WashU, with UX design by student designer Sophie Tao. The project lets people upload meaningful images of the sky and transforms those submissions into a curated gallery and dynamic visual experience.",
+      "description": "A collaborative sky-photo archive created to celebrate the beauty of the sky and transform those submissions into a curated gallery and dynamic visual experience. Created for Bei Hu at WashU.",
       "tags": ["#NextJS", "#React", "#SystemDesign","#TypeScript", "#Firebase", "#FramerMotion", "#Canvas", "#UIUX", "#CollaborativeDesign"],
       "thumbnail": "videos_n_shii/oursky-screens/home.png",
       "externalUrl": "https://oursky.vercel.app/",
@@ -283,12 +283,12 @@
         ],
         "images": [
           {
-            "src": "public/videos_n_shii/telegraph_tmb.jpg",
+            "src": "videos_n_shii/telegraph_tmb.jpg",
             "alt": "Telegraphy logo",
             "caption": "Logo of telegraphy fontface."
           },
           {
-            "src": "public/videos_n_shii/telegraph_alpha.jpg",
+            "src": "videos_n_shii/telegraph_alpha.jpg",
             "alt": "Telegraphy interface screenshot"          
           },{
             "src": "public/videos_n_shii/morse.jpg",
@@ -329,44 +329,44 @@
         "#ETL",
         "#NutritionData"
       ],
-      "thumbnail": "public/videos_n_shii/Screens_BearBites/Sim3.png",
+      "thumbnail": "videos_n_shii/Screens_BearBites/Sim3.png",
       "externalUrl": "",
       "mediaCount": 3,
       "media": {
         "videos": [],
         "images": [
           {
-            "src": "public/videos_n_shii/Screens_BearBites/Sim1.png",
+            "src": "videos_n_shii/Screens_BearBites/Sim1.png",
             "alt": "Log In Page",
             "caption": "Use google authentication to log in to the app. Logo and UI designed by me."
           },
           {
-            "src": "public/videos_n_shii/Screens_BearBites/Sim2.png",
+            "src": "videos_n_shii/Screens_BearBites/Sim2.png",
             "alt": "Walkthrough and guided sign up process.",
             "caption": "User walkthrough and guided sign up process."
           },
           {
-            "src": "public/videos_n_shii/Screens_BearBites/Sim3.png",
+            "src": "videos_n_shii/Screens_BearBites/Sim3.png",
             "alt": "Dashboard with search and filter options.",
             "caption": "Dashboard with search and filter options."
           },
           {
-            "src": "public/videos_n_shii/Screens_BearBites/sim4.png",
+            "src": "videos_n_shii/Screens_BearBites/sim4.png",
             "alt": "Welcome screen with user's name and meal history, dollars spent, and calories burned.",
             "caption": "Welcome screen with user's name and profile picture."
           },
           {
-            "src": "public/videos_n_shii/Screens_BearBites/sim5.png",
+            "src": "videos_n_shii/Screens_BearBites/sim5.png",
             "alt": "Macro breakdown of a meal.",
             "caption": "Macro breakdown of a meal."
           },
           {
-            "src": "public/videos_n_shii/Screens_BearBites/sim6.png",
+            "src": "videos_n_shii/Screens_BearBites/sim6.png",
             "alt": "Macro breakdown of a meal.",
             "caption": "Macro breakdown of a meal."
           },
           {
-            "src": "public/videos_n_shii/Screens_BearBites/schema.jpg",
+            "src": "videos_n_shii/Screens_BearBites/schema.jpg",
             "alt": "ETL pipeline diagram",
             "caption": "PDF → Anthropic API → JSON schema → Firestore pipeline."
           }
@@ -406,13 +406,13 @@
       "media": {
         "videos": [
           {
-            "src": "public/videos_n_shii/scroller.mp4",
+            "src": "videos_n_shii/scroller.mp4",
             "caption": "A recording of the scrolling page."
           }
         ],
         "images": [
           {
-            "src": "public/photocards/self.png",
+            "src": "photocards/self.png",
             "alt": "Self-Scroller hero section",
             "caption": "Opening frame of the auto-scroll sequence."
           }
@@ -444,17 +444,17 @@
       "media": {
         "images": [
           {
-            "src": "public/videos_n_shii/Screens_Revride/bikes.jpg",
+            "src": "videos_n_shii/Screens_Revride/bikes.jpg",
             "alt": "Bikes page with search and filter options.",
             "caption": "Bikes page... with a lot of bikes."
           },
           {
-            "src": "public/videos_n_shii/Screens_Revride/home.jpg",
+            "src": "videos_n_shii/Screens_Revride/home.jpg",
             "alt": "Home page with navigation and search options.",
             "caption": "Home page with a carousel of images."
           },
           {
-            "src": "public/videos_n_shii/Screens_Revride/rent.jpg",
+            "src": "videos_n_shii/Screens_Revride/rent.jpg",
             "alt": "Rental page with bike selection and booking options.",
             "caption": "Rental page with bike selection and booking options."
           }
@@ -487,7 +487,7 @@
         "videos": [],
         "images": [
           {
-            "src": "public/photocards/nitelife.png",
+            "src": "photocards/nitelife.png",
             "alt": "Nitelife gallery grid view",
             "caption": "Gallery of low-light photos."
           }
