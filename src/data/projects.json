@@ -90,7 +90,19 @@
       "glow": "130, 195, 225",
       "surface": "255, 255, 255",
       "text": "22, 30, 26"
-    }
+    },
+    "oursky": {
+      "background": "radial-gradient(circle at 82% 8%, rgba(139, 127, 91, 0.28) 0%, transparent 36%), radial-gradient(circle at 78% 88%, rgba(174, 105, 105, 0.26) 0%, transparent 34%), radial-gradient(circle at 18% 86%, rgba(62, 94, 112, 0.34) 0%, transparent 42%), linear-gradient(180deg, #2b1829 0%, #221827 34%, #202434 64%, #35404b 100%)",
+      "overlay": "rgba(12, 8, 18, 0.24)",
+      "accent": "191, 151, 154",
+      "accentHover": "224, 185, 178",
+      "tag": "139, 159, 172",
+      "navHover": "178, 137, 145",
+      "wip": "224, 185, 120",
+      "glow": "150, 166, 176",
+      "surface": "18, 16, 24",
+      "text": "245, 239, 240"
+    } 
   },
   "meta": {
     "archiveLabel": "archive",
@@ -108,7 +120,7 @@
     {
       "slug": "oursky",
       "title": "OurSky",
-      "theme": "black",
+      "theme": "oursky",
       "date": "2025-10",
       "status": "COMPLETE",
       "category": "Collaborative Web App / Interactive Archive",
