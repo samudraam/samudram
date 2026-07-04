@@ -12,7 +12,7 @@
  * @property {string} [text]
  */
 
-/** @type {Record<string, keyof ThemeTokens>} */
+/** @type {Record<keyof ThemeTokens, string>} */
 const CSS_VAR_MAP = {
   background: "--theme-bg",
   overlay: "--theme-overlay",
@@ -22,6 +22,7 @@ const CSS_VAR_MAP = {
   navHover: "--theme-nav-hover",
   wip: "--theme-wip",
   glow: "--theme-glow",
+  surface: "--theme-surface",
   text: "--theme-text",
 };
 
@@ -37,7 +38,10 @@ export const applyTheme = (theme) => {
 
     if (value) {
       root.style.setProperty(cssVar, value);
+      return;
     }
+
+    root.style.removeProperty(cssVar);
   });
 };
 

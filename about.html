@@ -102,6 +102,38 @@
           <a href="contact.html">Contact →</a>
         </nav>
       </section>
+
+      <section class="theme-callout" aria-labelledby="theme-callout-title">
+        <p class="theme-callout__eyebrow">theme system</p>
+        <h2 id="theme-callout-title">this page is wearing a project theme</h2>
+        <p>
+          The portfolio changes visual themes based on the design language of
+          selected projects and pages. Use the dropdown below to change the
+          source theme for this page.
+        </p>
+        <div class="theme-callout__control">
+          <label class="theme-callout__label" for="theme-project-select">
+            source theme dropdown
+          </label>
+          <div class="theme-callout__select-wrap">
+            <select
+              id="theme-project-select"
+              class="theme-callout__select"
+              aria-describedby="theme-selection-status"
+            ></select>
+          </div>
+        </div>
+        <p id="theme-selection-status" class="theme-callout__status">
+          Source theme will appear here.
+        </p>
+        <a
+          id="theme-project-link"
+          class="theme-callout__link"
+          href="projects.html"
+        >
+          View source project →
+        </a>
+      </section>
     </main>
     <script type="module" src="src/loader.js"></script>
   </body>

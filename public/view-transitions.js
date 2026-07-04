@@ -32,6 +32,16 @@
     viewTransition.updateCallbackDone?.catch?.(function () {});
   };
 
+  window.addEventListener("unhandledrejection", function (event) {
+    if (
+      event.reason instanceof DOMException &&
+      event.reason.name === "AbortError" &&
+      event.reason.message.includes("Transition was skipped")
+    ) {
+      event.preventDefault();
+    }
+  });
+
   window.addEventListener("pageswap", function (event) {
     document.querySelectorAll(".background video").forEach(function (video) {
       if (video instanceof HTMLVideoElement) {

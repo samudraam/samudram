@@ -1,6 +1,16 @@
 import projectsData from "./data/projects.json";
 import { initTheme, resolveTheme } from "./apply-theme.js";
 
+const THEME_MORPH_DURATION_MS = 1400;
+let themeMorphTimeoutId;
+const HOME_THEME_SOURCE = {
+  id: "home",
+  title: "Home page",
+  theme: "ocean",
+  href: "index.html",
+  linkLabel: "View source page",
+};
+
 /**
  * Returns a random theme key from the themes config.
  * @param {Record<string, unknown>} themes
@@ -14,6 +24,47 @@ const pickRandomThemeKey = (themes) => {
   }
 
   return keys[Math.floor(Math.random() * keys.length)];
+};
+
+/**
+ * Returns theme sources for pages and projects that have valid theme tokens.
+ * @param {typeof projectsData.projects} projects
+ * @returns {{ id: string, title: string, theme: string, href: string, linkLabel: string }[]}
+ */
+const getThemeSources = (projects) => {
+  const projectThemeSources = projects
+    .filter(
+      (project) =>
+        typeof project.theme === "string" && projectsData.themes[project.theme],
+    )
+    .map((project) => ({
+      id: project.slug,
+      title: project.title,
+      theme: project.theme,
+      href: `project.html?slug=${project.slug}`,
+      linkLabel: "View source project",
+    }));
+
+  if (!projectsData.themes[HOME_THEME_SOURCE.theme]) {
+    return projectThemeSources;
+  }
+
+  return [HOME_THEME_SOURCE, ...projectThemeSources];
+};
+
+/**
+ * Returns a random source that has a valid theme token.
+ * @param {typeof projectsData.projects} projects
+ * @returns {{ id: string, title: string, theme: string, href: string, linkLabel: string } | undefined}
+ */
+const pickRandomThemeSource = (projects) => {
+  const themeSources = getThemeSources(projects);
+
+  if (themeSources.length === 0) {
+    return undefined;
+  }
+
+  return themeSources[Math.floor(Math.random() * themeSources.length)];
 };
 
 /**
@@ -92,17 +143,146 @@ const resolveHighlight = (theme) => {
   return bestRgb;
 };
 
-const randomTheme = pickRandomThemeKey(projectsData.themes);
+/**
+ * Returns whether the visitor has requested reduced motion.
+ * @returns {boolean}
+ */
+const shouldReduceMotion = () =>
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-initTheme(projectsData.themes, randomTheme, projectsData.defaultTheme);
+/**
+ * Creates a temporary layer using the old theme so the new theme can fade in.
+ * @returns {HTMLDivElement | undefined}
+ */
+const createThemeMorphLayer = () => {
+  if (!document.body || shouldReduceMotion()) {
+    return undefined;
+  }
 
-const resolvedTheme = resolveTheme(
-  projectsData.themes,
-  randomTheme,
-  projectsData.defaultTheme,
-);
+  window.clearTimeout(themeMorphTimeoutId);
 
-document.documentElement.style.setProperty(
-  "--theme-highlight",
-  resolveHighlight(resolvedTheme),
-);
+  const rootStyle = getComputedStyle(document.documentElement);
+  const previousBackground = rootStyle.getPropertyValue("--theme-bg").trim();
+  const previousOverlay = rootStyle.getPropertyValue("--theme-overlay").trim();
+  const existingLayer = document.querySelector(".theme-morph-layer");
+  const layer =
+    existingLayer instanceof HTMLDivElement
+      ? existingLayer
+      : document.createElement("div");
+
+  layer.className = "theme-morph-layer";
+  layer.style.background = `${previousOverlay}, ${previousBackground}`;
+  layer.style.setProperty("--theme-morph-duration", `${THEME_MORPH_DURATION_MS}ms`);
+
+  if (!existingLayer) {
+    document.body.append(layer);
+  }
+
+  return layer;
+};
+
+/**
+ * Fades out the previous-theme layer after the new theme is applied.
+ * @param {HTMLDivElement | undefined} layer
+ */
+const fadeThemeMorphLayer = (layer) => {
+  if (!layer) {
+    return;
+  }
+
+  requestAnimationFrame(() => {
+    layer.classList.add("theme-morph-layer--fade");
+  });
+
+  themeMorphTimeoutId = window.setTimeout(() => {
+    layer.remove();
+  }, THEME_MORPH_DURATION_MS);
+};
+
+/**
+ * Applies a theme and keeps the highlighted accent readable.
+ * @param {string} themeKey
+ * @param {boolean} [animate=false]
+ */
+const updatePageTheme = (themeKey, animate = false) => {
+  const morphLayer = animate ? createThemeMorphLayer() : undefined;
+
+  initTheme(projectsData.themes, themeKey, projectsData.defaultTheme);
+
+  const resolvedTheme = resolveTheme(
+    projectsData.themes,
+    themeKey,
+    projectsData.defaultTheme,
+  );
+
+  document.documentElement.style.setProperty(
+    "--theme-highlight",
+    resolveHighlight(resolvedTheme),
+  );
+
+  fadeThemeMorphLayer(morphLayer);
+};
+
+/**
+ * Updates the callout copy and source project link.
+ * @param {{ title: string, theme: string, href: string, linkLabel: string } | undefined} source
+ */
+const updateThemeDialog = (source) => {
+  const themeProjectLink = document.getElementById("theme-project-link");
+  const themeSelectionStatus = document.getElementById("theme-selection-status");
+
+  if (themeSelectionStatus instanceof HTMLElement && source) {
+    themeSelectionStatus.textContent = `Source theme: ${source.title} (${source.theme}).`;
+  }
+
+  if (themeProjectLink instanceof HTMLAnchorElement && source) {
+    themeProjectLink.href = source.href;
+    themeProjectLink.textContent = `${source.linkLabel}: ${source.title} →`;
+  }
+};
+
+/**
+ * Builds the theme dropdown and connects it to instant theme updates.
+ * @param {HTMLSelectElement} select
+ * @param {{ id: string, title: string, theme: string, href: string, linkLabel: string }[]} themeSources
+ * @param {{ id: string } | undefined} activeSource
+ */
+const initThemeSelect = (select, themeSources, activeSource) => {
+  select.innerHTML = themeSources
+    .map(
+      (source) =>
+        `<option value="${source.id}">${source.title} (${source.theme})</option>`,
+    )
+    .join("");
+
+  if (activeSource) {
+    select.value = activeSource.id;
+  }
+
+  select.addEventListener("change", () => {
+    const selectedSource = themeSources.find(
+      (source) => source.id === select.value,
+    );
+
+    if (!selectedSource) {
+      return;
+    }
+
+    updatePageTheme(selectedSource.theme, true);
+    updateThemeDialog(selectedSource);
+  });
+};
+
+const themeSources = getThemeSources(projectsData.projects);
+const randomSource = pickRandomThemeSource(projectsData.projects);
+const randomTheme = randomSource?.theme ?? pickRandomThemeKey(projectsData.themes);
+
+updatePageTheme(randomTheme);
+
+updateThemeDialog(randomSource);
+
+const themeProjectSelect = document.getElementById("theme-project-select");
+
+if (themeProjectSelect instanceof HTMLSelectElement) {
+  initThemeSelect(themeProjectSelect, themeSources, randomSource);
+}
