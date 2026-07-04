@@ -20,6 +20,25 @@ const findProjectBySlug = (slug) =>
   projectsData.projects.find((project) => project.slug === slug);
 
 /**
+ * Marks a project video as display-ready when its poster or frame data exists.
+ * @param {HTMLVideoElement} video
+ */
+const initProjectVideoReadyState = (video) => {
+  if (video.poster || video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+    video.classList.add("is-media-ready");
+    return;
+  }
+
+  video.addEventListener(
+    "loadeddata",
+    () => {
+      video.classList.add("is-media-ready");
+    },
+    { once: true },
+  );
+};
+
+/**
  * Builds HTML for video media blocks.
  * @param {typeof projectsData.projects[number]["media"]["videos"]} videos
  * @returns {string}
@@ -191,11 +210,7 @@ const renderProjectDetail = (container, project) => {
     ${createNotesHtml(project.notes)}
   `;
 
-  container.querySelectorAll("video").forEach((video) => {
-    video.addEventListener("loadeddata", () => {
-      video.classList.add("is-media-ready");
-    });
-  });
+  container.querySelectorAll("video").forEach(initProjectVideoReadyState);
 
   if (media.images?.length) {
     initGalleryLightbox(container, media.images);
