@@ -276,8 +276,8 @@
       "media": {
         "videos": [
           {
-            "src": "public/videos_n_shii/transform.mp4",
-            "poster": "public/videos_n_shii/telegraph_alpha.jpg",
+            "src": "videos_n_shii/transform.mp4",
+            "poster": "videos_n_shii/telegraph_alpha.jpg",
             "caption":  "Alphabet transformation to morse code made with Framer Motion."
           }
         ],
@@ -291,7 +291,7 @@
             "src": "videos_n_shii/telegraph_alpha.jpg",
             "alt": "Telegraphy interface screenshot"          
           },{
-            "src": "public/videos_n_shii/morse.jpg",
+            "src": "videos_n_shii/morse.jpg",
             "alt": "Morse code alphabet",
             "caption": "Morse code alphabet."
           }

@@ -1,5 +1,6 @@
 import projectsData from "./data/projects.json";
 import { initTheme } from "./apply-theme.js";
+import { animate, stagger } from "motion";
 
 /** @type {string} */
 let activeCategory = "All";
@@ -104,6 +105,11 @@ const renderProjectList = (listEl) => {
   }
 
   listEl.innerHTML = filtered.map(createProjectEntryHtml).join("");
+  animate(
+    listEl.querySelectorAll(".project-entry"),
+    { opacity: [0, 1], y: [24, 0] },
+    { duration: 0.45, delay: stagger(0.40), easing: "ease-in" }
+  );
 };
 
 /**

@@ -49,13 +49,11 @@ body.contact-page {
 }
 
 .contact-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(0.75rem, 2.5vw, 1rem);
   width: 100%;
-  max-width: 32rem;
+  max-width: 36rem;
   animation: fadeIn 1.5s ease-out forwards;
   animation-delay: 0.5s;
   opacity: 0;
@@ -64,7 +62,6 @@ body.contact-page {
 button.contact-btn {
   appearance: none;
   -webkit-appearance: none;
-  font: inherit;
 }
 
 .contact-btn {
@@ -73,8 +70,9 @@ button.contact-btn {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  flex: 1 1 9.5rem;
-  min-width: min(100%, 9.5rem);
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-inline-size: 0;
   padding: 0.85rem 1.25rem;
   border-radius: 999px;
   font-family: "DM Mono", monospace;
@@ -142,26 +140,13 @@ button.contact-btn {
 
 @media (min-width: 520px) {
   .contact-actions {
-    flex-direction: row;
     max-width: 36rem;
-  }
-
-  .contact-btn {
-    flex: 1 1 0;
-    min-width: 8.5rem;
-    width: auto;
   }
 }
 
 @media (max-width: 519px) {
   .contact-actions {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     max-width: 18rem;
-  }
-
-  .contact-btn {
-    flex: 1 1 auto;
-    width: 100%;
-    min-width: 0;
   }
 }
