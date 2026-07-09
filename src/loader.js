@@ -74,9 +74,10 @@ const waitForHeavyAssets = () => {
     window.setTimeout(resolve, MEDIA_READY_TIMEOUT_MS);
   });
 
-  return Promise.race([Promise.allSettled(videos.map(waitForVideoReady)), timeout]).then(
-    () => undefined,
-  );
+  return Promise.race([
+    Promise.allSettled(videos.map(waitForVideoReady)),
+    timeout,
+  ]).then(() => undefined);
 };
 
 /**
