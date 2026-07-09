@@ -148,7 +148,7 @@ const createVideosHtml = (videos) => {
   const items = videos
     .map(
       (video) => {
-        const fallbackSrc = video.src.startsWith("public/")
+        const publicSrc = video.src.startsWith("public/")
           ? video.src
           : `public/${video.src}`;
 
@@ -161,8 +161,8 @@ const createVideosHtml = (videos) => {
             preload="metadata"
             poster="${video.poster || ""}"
           >
+            <source src="${publicSrc}" type="video/mp4" />
             <source src="${video.src}" type="video/mp4" />
-            <source src="${fallbackSrc}" type="video/mp4" />
           </video>
           ${
             video.caption
