@@ -6,6 +6,7 @@ const COPY_LABEL = "email";
 const AGENT_DEBUG_ENDPOINT =
   "http://127.0.0.1:7547/ingest/96b32e8d-a64f-4e20-aa21-99c92673c97b";
 const AGENT_DEBUG_SESSION_ID = "800fcf";
+const AGENT_DEBUG_HOSTS = new Set(["localhost", "127.0.0.1"]);
 
 /**
  * Sends temporary contact-page diagnostics to the debug log collector.
@@ -14,6 +15,10 @@ const AGENT_DEBUG_SESSION_ID = "800fcf";
  * @param {Record<string, unknown>} data - Safe runtime details.
  */
 const postAgentDebugLog = (hypothesisId, message, data) => {
+  if (!AGENT_DEBUG_HOSTS.has(window.location.hostname)) {
+    return;
+  }
+
   fetch(AGENT_DEBUG_ENDPOINT, {
     method: "POST",
     headers: {
