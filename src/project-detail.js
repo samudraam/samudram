@@ -51,6 +51,22 @@ const getSlugFromUrl = () => {
 const findProjectBySlug = (slug) =>
   projectsData.projects.find((project) => project.slug === slug);
 
+console.log("Hello World");
+/**
+ * Logs a message whenever a project video is clicked.
+ * @param {HTMLVideoElement} video
+ */
+const initVideoClickLogging = (video) => {
+  const handleVideoClick = () => {
+    console.log("Video clicked:", video.currentSrc, {
+      paused: video.paused,
+      currentTime: video.currentTime,
+    });
+  };
+
+  video.addEventListener("click", handleVideoClick);
+};
+
 /**
  * Marks a project video as display-ready when its poster or metadata exists.
  * @param {HTMLVideoElement} video
@@ -244,6 +260,7 @@ const renderProjectDetail = (container, project) => {
 
   container.querySelectorAll("video").forEach((video) => {
     initProjectVideoReadyState(video);
+    initVideoClickLogging(video);
   });
 
   if (media.images?.length) {
