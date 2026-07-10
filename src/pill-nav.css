@@ -1,6 +1,13 @@
 /**
- * Shared pill navigation — pixel-based sizing so it stays consistent
+ * pill-nav.css
+ * ============
+ * PURPOSE: Styles the pill-shaped navigation bar shared by every page: a
+ * fixed, centered, frosted-glass bar with the main site links. Also enables
+ * cross-page view transitions so the nav appears to persist while the rest
+ * of the page changes. Uses pixel-based sizing so it stays consistent
  * regardless of each page's root font-size (home uses 24px, others 16px).
+ * No functions — main sections are: @view-transition, :root sizing
+ * variables, and .pill-nav styles.
  */
 @view-transition {
   navigation: auto;

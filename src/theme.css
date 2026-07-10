@@ -1,3 +1,16 @@
+/**
+ * theme.css
+ * =========
+ * PURPOSE: Central theme definitions shared by the projects, project detail,
+ * and about pages. Declares the CSS custom properties every themed style
+ * reads (--theme-bg, --theme-accent, --theme-tag, etc), with defaults on
+ * :root and per-theme overrides under [data-theme="..."] selectors (ocean,
+ * black, industrial, and more). apply-theme.js sets the data-theme attribute
+ * and can override individual variables at runtime. No functions — main
+ * sections are: font loading, :root default tokens, and one block per
+ * named theme preset.
+ */
+
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Syne:wght@400..800&display=swap");
 @import "./loader.css";
 @import "./pill-nav.css";

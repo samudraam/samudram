@@ -1,4 +1,22 @@
 /**
+ * apply-theme.js
+ * ==============
+ * PURPOSE: Shared theming engine used by every page. Themes are defined as
+ * token objects in data/projects.json (colors for background, accent, tags,
+ * etc). This module resolves a theme reference into concrete tokens and
+ * writes them onto <html> as CSS custom properties (e.g. --theme-accent),
+ * which theme.css and the page stylesheets read from.
+ *
+ * FUNCTIONS:
+ * - applyTheme(theme)                    Writes theme tokens as CSS variables
+ *                                        on the document root.
+ * - resolveTheme(themes, themeRef, fallbackKey) Turns a preset name or inline
+ *                                        override object into a full token set.
+ * - initTheme(themes, themeRef, fallbackKey) Sets the data-theme attribute
+ *                                        and applies the resolved tokens.
+ */
+
+/**
  * @typedef {Object} ThemeTokens
  * @property {string} background - CSS background value (gradient or solid color)
  * @property {string} overlay - CSS overlay color

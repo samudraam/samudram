@@ -1,3 +1,33 @@
+/**
+ * about-theme.js
+ * ==============
+ * PURPOSE: Gives the about page (about.html) a randomized theme. On load it
+ * picks a random theme from the home page or any project that defines one,
+ * applies it, and fills in a callout naming the source with a link to it.
+ * A dropdown lets visitors switch themes manually, with a soft cross-fade
+ * animation between the old and new background.
+ *
+ * FUNCTIONS:
+ * - pickRandomThemeKey(themes)       Picks a random theme name as a fallback.
+ * - getThemeSources(projects)        Lists all pages/projects with a usable
+ *                                    theme (home page + themed projects).
+ * - pickRandomThemeSource(projects)  Picks one source at random.
+ * - parseRgb(rgb)                    Parses "r, g, b" strings into numbers.
+ * - getLuminance(red, green, blue)   Computes color brightness (WCAG).
+ * - getContrastRatio(a, b)           Computes contrast between two colors.
+ * - resolveHighlight(theme)          Picks the theme color most readable
+ *                                    against the surface color.
+ * - shouldReduceMotion()             Checks the reduced-motion preference.
+ * - createThemeMorphLayer()          Snapshots the old theme in an overlay
+ *                                    so the new one can fade in beneath it.
+ * - fadeThemeMorphLayer(layer)       Fades out and removes that overlay.
+ * - updatePageTheme(themeKey, animate) Applies a theme plus the readable
+ *                                    highlight color.
+ * - updateThemeDialog(source)        Updates the callout text and link.
+ * - initThemeSelect(select, themeSources, activeSource) Builds the dropdown
+ *                                    and wires its change handler.
+ */
+
 import projectsData from "./data/projects.json";
 import { initTheme, resolveTheme } from "./apply-theme.js";
 

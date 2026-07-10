@@ -1,3 +1,14 @@
+/**
+ * loader.css
+ * ==========
+ * PURPOSE: Styles the full-screen "dive" loading overlay controlled by
+ * loader.js. The overlay covers the page with an ocean-like gradient, then
+ * reveals the content through an expanding circular mask driven by the
+ * animatable --dive-radius custom property. No functions — main sections
+ * are: @property --dive-radius, body.is-loading scroll lock, .frost-loader
+ * overlay, and the reveal animation keyframes.
+ */
+
 @property --dive-radius {
   syntax: "<percentage>";
   inherits: false;

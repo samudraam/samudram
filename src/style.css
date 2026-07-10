@@ -1,3 +1,15 @@
+/**
+ * style.css
+ * =========
+ * PURPOSE: Base stylesheet for the home page (index.html), also imported by
+ * contact.css. Loads the Syne font and the shared loader/nav styles, hides
+ * videos until they are ready (see media-ready.js), defines the fixed
+ * full-screen background video layer with its tinted overlay, and lays out
+ * the hero content. No functions — main sections are: font loading,
+ * media-ready visibility rules, .background video layer, and .container
+ * hero layout.
+ */
+
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap");
 @import "./loader.css";
 @import "./pill-nav.css";

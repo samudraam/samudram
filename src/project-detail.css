@@ -1,3 +1,15 @@
+/**
+ * project-detail.css
+ * ==================
+ * PURPOSE: Styles for the single-project page (project.html), rendered by
+ * project-detail.js. Defines the reusable frosted-glass surface, the detail
+ * layout (back link, meta row, title, tags, external link), the media
+ * sections for videos and the image gallery, the field-notes blocks, and
+ * the full-screen gallery lightbox overlay. No functions — main sections
+ * are: .glass-surface, .project-detail layout, .media-* sections,
+ * .notes-section, and .gallery-lightbox.
+ */
+
 @import "./theme.css";
 
 .glass-surface {

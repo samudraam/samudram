@@ -1,3 +1,26 @@
+/**
+ * gallery-lightbox.js
+ * ===================
+ * PURPOSE: Full-screen image viewer for project galleries. When a gallery
+ * thumbnail is clicked on the project detail page, this opens an overlay
+ * (the "lightbox") showing the image at full size with prev/next arrows,
+ * a caption, and a counter. Supports keyboard navigation (Escape closes,
+ * arrow keys change slides) and returns focus to the thumbnail on close.
+ *
+ * FUNCTIONS:
+ * - getLightboxEl()            Returns the overlay element, building it the
+ *                              first time it is needed.
+ * - renderActiveSlide()        Updates the image, caption, and counter for
+ *                              the currently shown slide.
+ * - openLightbox(index)        Opens the overlay at a given image index.
+ * - closeLightbox()            Hides the overlay and restores focus.
+ * - stepSlide(delta)           Moves forward/backward, wrapping at the ends.
+ * - handleLightboxClick(event) Routes clicks on close/prev/next buttons.
+ * - handleLightboxKeydown(event) Handles Escape and arrow-key navigation.
+ * - initGalleryLightbox(container, images) Public entry point: wires the
+ *                              gallery thumbnails to open the lightbox.
+ */
+
 /** @type {HTMLElement | null} */
 let lightboxEl = null;
 

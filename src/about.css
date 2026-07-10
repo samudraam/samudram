@@ -1,3 +1,14 @@
+/**
+ * about.css
+ * =========
+ * PURPOSE: Styles for the about page (about.html), themed at runtime by
+ * about-theme.js. Defines the theme cross-fade overlay used when switching
+ * themes, and the two-column layout: profile photo column on the left and
+ * bio panel on the right, with the theme-source callout and dropdown.
+ * No functions — main sections are: .theme-morph-layer, .about-page grid,
+ * .about-profile column, and the bio/callout panel.
+ */
+
 @import "./theme.css";
 
 :root {

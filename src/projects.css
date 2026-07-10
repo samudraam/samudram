@@ -1,3 +1,14 @@
+/**
+ * projects.css
+ * ============
+ * PURPOSE: Styles for the projects archive page (projects.html), rendered by
+ * projects-list.js. Covers the "field log" layout: breadcrumb, page header
+ * with entry count, category filter buttons, and the list of project entries
+ * (date, status badge, title, tags, media-count indicator). No functions —
+ * main sections are: .archive layout, .archive-header, .filter-btn bar, and
+ * .project-entry rows.
+ */
+
 @import "./theme.css";
 
 .archive {

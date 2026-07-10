@@ -1,3 +1,24 @@
+/**
+ * projects-list.js
+ * ================
+ * PURPOSE: Powers the projects archive page (projects.html), styled as a
+ * "field log". Shows the total entry count, renders category filter buttons,
+ * and lists every project from data/projects.json. Clicking a filter
+ * re-renders the list, and new entries animate in with a stagger effect.
+ *
+ * FUNCTIONS:
+ * - getFilteredProjects(projects)          Returns projects matching the
+ *                                          currently selected category.
+ * - createProjectEntryHtml(project)        Builds the HTML for one list row
+ *                                          (date, status, title, tags).
+ * - renderFilters(container, onFilterChange) Draws the filter buttons and
+ *                                          wires their click handlers.
+ * - renderProjectList(listEl)              Draws the filtered list and runs
+ *                                          the entrance animation.
+ * - initProjectsList()                     Entry point, runs on
+ *                                          DOMContentLoaded.
+ */
+
 import projectsData from "./data/projects.json";
 import { initTheme } from "./apply-theme.js";
 import { animate, stagger } from "motion";

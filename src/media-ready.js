@@ -1,7 +1,24 @@
 /**
- * Reveals background videos once the first frame is available.
- * Native `<video>` elements are always `:defined`, so Shoelace's
+ * media-ready.js
+ * ==============
+ * PURPOSE: Prevents background videos from flashing while they load.
+ * style.css hides every <video> until it has the "is-media-ready" class;
+ * this script watches each video on the page and adds that class once the
+ * first frame of data is available. Also contains temporary debug logging
+ * (the "agent log" regions) used during local development.
+ *
+ * Native <video> elements are always `:defined`, so Shoelace's
  * `:not(:defined)` rule does not cover media load flash on its own.
+ *
+ * FUNCTIONS:
+ * - postAgentDebugLog(hypothesisId, message, data) Sends debug info to a
+ *                              local log collector (localhost only).
+ * - getVideoDebugState(video)  Captures a video's playback state for logs.
+ * - markVideoReady(video)      Adds the class that makes the video visible.
+ * - initVideoReadyState(video) Reveals the video now, or waits for its
+ *                              loadeddata/canplay events.
+ * - initMediaReady()           Entry point: finds all page videos and wires
+ *                              them up, runs on DOMContentLoaded.
  */
 
 const MEDIA_READY_CLASS = "is-media-ready";

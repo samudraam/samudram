@@ -1,3 +1,25 @@
+/**
+ * contact.js
+ * ==========
+ * PURPOSE: Runs the contact page (contact.html). Its main job is the
+ * "copy email" button: clicking it copies the email address to the
+ * clipboard and briefly swaps the button label to "copied!". It also
+ * contains temporary debug logging (the "agent log" region) used to
+ * diagnose layout and background-video issues during local development.
+ *
+ * FUNCTIONS:
+ * - postAgentDebugLog(hypothesisId, message, data) Sends debug info to a
+ *                                    local log collector (localhost only).
+ * - getContactLayoutMetrics()        Measures button/viewport sizes to
+ *                                    detect horizontal overflow.
+ * - getContactVideoMetrics()         Reports background video playback state.
+ * - initContactDiagnostics()         Wires the temporary debug listeners.
+ * - copyToClipboard(text)            Copies text, with a fallback for
+ *                                    older browsers.
+ * - showCopyFeedback(button, feedback) Shows the "copied!" confirmation.
+ * - initContactPage()                Entry point, wires the copy button.
+ */
+
 const EMAIL = "r.samudrala234@gmail.com";
 const COPIED_LABEL = "copied!";
 const COPY_LABEL = "email";

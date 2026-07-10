@@ -1,3 +1,14 @@
+/**
+ * contact.css
+ * ===========
+ * PURPOSE: Styles for the contact page (contact.html), which uses a blurred
+ * version of the home-page background video. Lays out the centered contact
+ * content (heading, intro, action buttons) and styles the copy-email button,
+ * including its "copied!" confirmation state handled by contact.js.
+ * No functions — main sections are: blurred .background override,
+ * .contact-content layout, and .contact-btn styles.
+ */
+
 @import "./style.css";
 
 .background.blurred video {

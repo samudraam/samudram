@@ -1,5 +1,25 @@
 /**
- * Dive-in overlay that reveals the page after initial media is ready.
+ * loader.js
+ * =========
+ * PURPOSE: Controls the full-screen "dive" loading overlay (#frost-loader).
+ * On pages that include it, the overlay covers the screen until the page
+ * has rendered and its videos have loaded (or a timeout passes), then plays
+ * a circular reveal animation and removes itself. Users who prefer reduced
+ * motion skip the animation and get an instant reveal.
+ *
+ * FUNCTIONS:
+ * - prefersReducedMotion()      Checks the reduced-motion preference.
+ * - markVideoReady(video)       Adds the class that makes a video visible.
+ * - shouldWaitForVideo(video)   Decides if a video must load before reveal.
+ * - waitForVideoReady(video)    Resolves once a video can show its first
+ *                               frame.
+ * - waitForHeavyAssets()        Waits for all page videos, capped by a
+ *                               timeout so users are never stuck.
+ * - waitForPageRender()         Waits two animation frames so dynamically
+ *                               injected media is included in the scan.
+ * - dismissLoader(loader)       Removes the overlay and unlocks scrolling.
+ * - revealPage(loader)          Plays the circular dive-reveal animation.
+ * - initDiveLoader()            Entry point, runs on DOMContentLoaded.
  */
 
 const DIVE_REVEAL_DURATION_MS = 1800;

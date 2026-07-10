@@ -1,3 +1,25 @@
+/**
+ * project-detail.js
+ * =================
+ * PURPOSE: Renders the single-project detail page (project.html?slug=...).
+ * Reads the "slug" from the URL, looks up the matching project in
+ * data/projects.json, applies that project's color theme, and builds the
+ * full page HTML: title, tags, external link, videos, image gallery, and notes.
+ *
+ * FUNCTIONS:
+ * - resolveMediaUrl(path)            Converts a media path from projects.json
+ *                                    into a URL that works after deployment.
+ * - getSlugFromUrl()                 Reads ?slug=... from the address bar.
+ * - findProjectBySlug(slug)          Finds the matching project record.
+ * - initProjectVideoReadyState(video) Un-hides a video once it can display.
+ * - createVideosHtml(videos)         Builds the "Video" section HTML.
+ * - createImagesHtml(images)         Builds the "Gallery" section HTML.
+ * - createNotesHtml(notes)           Builds the "Field Notes" section HTML.
+ * - renderNotFound(container)        Shows an error state for bad slugs.
+ * - renderProjectDetail(container, project) Renders the whole detail view.
+ * - initProjectDetail()              Entry point, runs on DOMContentLoaded.
+ */
+
 import projectsData from "./data/projects.json";
 import { initTheme } from "./apply-theme.js";
 import { initGalleryLightbox } from "./gallery-lightbox.js";
