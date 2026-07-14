@@ -66,24 +66,10 @@ video:not(.is-media-ready) {
 /* Boot state: painted by static HTML before any JS runs, so the page is
    covered from the very first frame with no flash of content. curtains.js
    swaps this solid cover for real panels, then animates them out. */
-#curtains.curtains--boot,
-#curtains.curtains--active {
-  background-color: var(--curtain-solid);
-}
-
 #curtains.curtains--boot {
-  background-image: var(--curtain-bg);
+  background-color: var(--curtain-boot-solid, var(--curtain-solid));
+  background-image: var(--curtain-boot-bg, var(--curtain-bg));
   pointer-events: auto;
-}
-
-/* Opaque plate behind panels — blocks grain/texture if panels gap briefly. */
-#curtains.curtains--boot::before,
-#curtains.curtains--active::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--curtain-solid);
-  z-index: 0;
 }
 
 #curtains.curtains--active {
@@ -109,4 +95,16 @@ video:not(.is-media-ready) {
   /* A hair of negative margin overlaps adjacent panels so subpixel
      rounding never shows a seam between columns mid-animation. */
   margin-inline: -0.5px;
+}
+
+/* Opaque outgoing-theme plate. Motion.js fades only this plate, revealing
+   destination-colored panels beneath it without exposing page texture. */
+.curtains__theme-handoff {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-position: center;
+  background-size: cover;
+  pointer-events: none;
+  will-change: opacity;
 }

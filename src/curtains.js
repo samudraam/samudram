@@ -46,6 +46,9 @@ const PANEL_DURATION_S = 0.55;
 /** Delay between consecutive panels, in seconds. Smaller = tighter wave. */
 const STAGGER_STEP_S = 0.07;
 
+/** Duration of the opaque outgoing-theme to destination-theme crossfade. */
+const THEME_HANDOFF_S = 0.32;
+
 /** Brief hold at full opaque cover so IN and OUT do not butt together. */
 const COVER_HOLD_S = 0.22;
 
@@ -74,6 +77,8 @@ const OVERLAY_ID = "curtains";
 const PANEL_CLASS = "curtain";
 const OVERLAY_ACTIVE_CLASS = "curtains--active";
 const OVERLAY_BOOT_CLASS = "curtains--boot";
+const THEME_HANDOFF_CLASS = "curtains__theme-handoff";
+const THEME_STORAGE_KEY = "curtain-source-theme";
 
 /** Prevents overlapping transitions from fighting over the same panels. */
 let isTransitionRunning = false;
@@ -164,6 +169,76 @@ const createPanels = (overlay, count, covering = false) => {
 };
 
 /**
+ * Captures the fully resolved curtain colors for the destination document.
+ * sessionStorage carries these values across the cross-document navigation.
+ * @returns {{ background: string, solid: string }}
+ */
+const getCurrentCurtainTheme = () => {
+  const rootStyles = window.getComputedStyle(document.documentElement);
+
+  return {
+    background: rootStyles.getPropertyValue("--curtain-bg").trim(),
+    solid: rootStyles.getPropertyValue("--curtain-solid").trim(),
+  };
+};
+
+/**
+ * Saves the outgoing curtain colors for the next document's boot script.
+ */
+const saveCurrentCurtainTheme = () => {
+  try {
+    window.sessionStorage.setItem(
+      THEME_STORAGE_KEY,
+      JSON.stringify(getCurrentCurtainTheme()),
+    );
+  } catch {
+    // Storage can be unavailable in strict privacy modes; navigation still works.
+  }
+};
+
+/**
+ * Creates an opaque outgoing-theme plate above destination-colored panels.
+ * @param {HTMLElement} overlay
+ * @returns {HTMLElement | null}
+ */
+const createThemeHandoff = (overlay) => {
+  const sourceTheme = window.__curtainSourceTheme;
+
+  if (!sourceTheme?.background || !sourceTheme?.solid) {
+    return null;
+  }
+
+  const handoff = document.createElement("div");
+  handoff.className = THEME_HANDOFF_CLASS;
+  handoff.style.backgroundColor = sourceTheme.solid;
+  handoff.style.backgroundImage = sourceTheme.background;
+  overlay.appendChild(handoff);
+  return handoff;
+};
+
+/**
+ * Crossfades the opaque outgoing theme into the destination panels below.
+ * Because both layers remain opaque, page grain never bleeds through.
+ * @param {HTMLElement | null} handoff
+ * @returns {Promise<void>}
+ */
+const animateThemeHandoff = async (handoff) => {
+  if (!handoff) {
+    return;
+  }
+
+  await animate(
+    handoff,
+    { opacity: [1, 0] },
+    { duration: THEME_HANDOFF_S, ease: PANEL_EASE },
+  );
+  handoff.remove();
+  document.documentElement.style.removeProperty("--curtain-boot-bg");
+  document.documentElement.style.removeProperty("--curtain-boot-solid");
+  delete window.__curtainSourceTheme;
+};
+
+/**
  * Phase 1 — slides panels up from below to cover the viewport.
  * Motion.js specifics: animate() accepts an element array and applies the
  * same keyframes to each; stagger(step) offsets each element's delay by
@@ -242,6 +317,9 @@ export const resetCurtains = () => {
   }
 
   document.body.classList.remove("is-loading");
+  document.documentElement.style.removeProperty("--curtain-boot-bg");
+  document.documentElement.style.removeProperty("--curtain-boot-solid");
+  delete window.__curtainSourceTheme;
   isTransitionRunning = false;
 };
 
@@ -270,6 +348,7 @@ export const navigateWithCurtains = async (href) => {
   overlay.classList.add(OVERLAY_ACTIVE_CLASS);
 
   await animateIn(panels);
+  saveCurrentCurtainTheme();
   window.location.href = href;
   // No cleanup: the page is unloading, and the cover must persist until
   // the browser swaps documents.
@@ -291,6 +370,7 @@ export const navigateWithCurtains = async (href) => {
 export const initCurtainReveal = async () => {
   const overlay = ensureOverlay();
   const panels = createPanels(overlay, getPanelCountForViewport(), true);
+  const themeHandoff = createThemeHandoff(overlay);
 
   // Real panels are in place at y: 0; the solid boot cover can go.
   overlay.classList.remove(OVERLAY_BOOT_CLASS);
@@ -304,6 +384,7 @@ export const initCurtainReveal = async () => {
   await waitForHeavyAssets();
 
   if (!prefersReducedMotion()) {
+    await animateThemeHandoff(themeHandoff);
     await holdCoveredBeat();
     await animateOut(panels);
   }
