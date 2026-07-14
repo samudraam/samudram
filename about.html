@@ -4,20 +4,12 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/portfolio.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="view-transitions.js"></script>
     <title>About — samudraam</title>
     <script type="module" src="src/about-theme.js"></script>
     <link rel="stylesheet" href="src/about.css" />
   </head>
   <body class="is-loading">
-    <div
-      class="frost-loader"
-      id="frost-loader"
-      role="status"
-      aria-live="polite"
-      aria-hidden="false"
-      aria-label="Loading"
-    ></div>
+    <div id="curtains" class="curtains--boot" aria-hidden="true"></div>
     <div class="grain-overlay"></div>
     <div class="scanlines" aria-hidden="true"></div>
     <nav class="pill-nav">
@@ -135,6 +127,6 @@
         </a>
       </section>
     </main>
-    <script type="module" src="src/loader.js"></script>
+    <script type="module" src="src/page-transitions.js"></script>
   </body>
 </html>

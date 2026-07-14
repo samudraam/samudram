@@ -4,19 +4,11 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/portfolio.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="view-transitions.js"></script>
     <title>samudraam</title>
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body class="is-loading">
-    <div
-      class="frost-loader"
-      id="frost-loader"
-      role="status"
-      aria-live="polite"
-      aria-hidden="false"
-      aria-label="Loading"
-    ></div>
+    <div id="curtains" class="curtains--boot" aria-hidden="true"></div>
     <div class="invert-circle"></div>
     <nav class="pill-nav">
       <a href="index.html">home</a>
@@ -26,7 +18,6 @@
     </nav>
     <div class="background">
       <video autoplay muted loop playsinline>
-        <source src="public/wave.mp4" type="video/mp4" />
         <source src="wave.mp4" type="video/mp4" />
       </video>
     </div>
@@ -36,7 +27,6 @@
       </h1>
       <h2 class="subname">ramya samudrala</h2>
     </div>
-    <script type="module" src="src/media-ready.js"></script>
-    <script type="module" src="src/loader.js"></script>
+    <script type="module" src="src/page-transitions.js"></script>
   </body>
 </html>

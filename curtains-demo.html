@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curtains — stagger wipe demo</title>
+    <link rel="stylesheet" href="src/curtains.css" />
+    <style>
+      /* Demo-only styling. The curtain effect itself lives in
+         src/curtains.css + src/curtains.js and needs none of this. */
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: "Syne", system-ui, sans-serif;
+        background: #f4f1ea;
+        color: #10233c;
+      }
+
+      .demo-card {
+        max-width: 34rem;
+        padding: 3rem 2.5rem;
+        text-align: center;
+      }
+
+      .demo-card h1 {
+        font-size: clamp(2rem, 6vw, 3.25rem);
+        margin: 0 0 0.75rem;
+      }
+
+      .demo-card p {
+        line-height: 1.6;
+        margin: 0 0 2rem;
+      }
+
+      .demo-actions {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .demo-actions button {
+        font: inherit;
+        padding: 0.75rem 1.5rem;
+        border: 2px solid #10233c;
+        border-radius: 999px;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+      }
+
+      .demo-actions button:hover {
+        background: #10233c;
+        color: #f4f1ea;
+      }
+
+      .demo-hint {
+        margin-top: 2.5rem;
+        font-size: 0.85rem;
+        opacity: 0.65;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="demo-card">
+      <h1 id="demo-title">Page One</h1>
+      <p id="demo-copy">
+        Click a button to play the stagger wipe. Panels slide up to cover the
+        screen, the content swaps while hidden, then the panels continue off
+        the top to reveal it.
+      </p>
+      <div class="demo-actions">
+        <button type="button" id="go-page-two">Go to page two</button>
+        <button type="button" id="go-page-one">Back to page one</button>
+      </div>
+      <p class="demo-hint">
+        Resize the window and replay: &lt;640px shows 3 panels, 640–1024px
+        shows 4, wider shows 8.
+      </p>
+    </main>
+    <script type="module" src="src/curtains-demo.js"></script>
+  </body>
+</html>

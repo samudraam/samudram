@@ -11,6 +11,23 @@
 
 @import "./style.css";
 
+:root {
+  /* Frost-themed curtains for the contact page: icy cyan highlights over
+     deep ocean blues, sampled from the old frost loader palette. */
+  --curtain-solid: #010b24;
+  --curtain-bg: radial-gradient(
+      circle at 50% 30%,
+      rgba(174, 246, 255, 0.28),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 50% 70%,
+      rgba(0, 139, 185, 0.45),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #042a54 0%, #010b24 100%);
+}
+
 .background.blurred video {
   filter: blur(50px);
   transform: scale(1.1);

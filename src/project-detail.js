@@ -11,7 +11,7 @@
  *                                    into a URL that works after deployment.
  * - getSlugFromUrl()                 Reads ?slug=... from the address bar.
  * - findProjectBySlug(slug)          Finds the matching project record.
- * - initProjectVideoReadyState(video) Un-hides a video once it can display.
+ * - initVideoReadyState(video)       Un-hides a video once it can display.
  * - createVideosHtml(videos)         Builds the "Video" section HTML.
  * - createImagesHtml(images)         Builds the "Gallery" section HTML.
  * - createNotesHtml(notes)           Builds the "Field Notes" section HTML.
@@ -23,6 +23,7 @@
 import projectsData from "./data/projects.json";
 import { initTheme } from "./apply-theme.js";
 import { initGalleryLightbox } from "./gallery-lightbox.js";
+import { initVideoReadyState } from "./video-ready.js";
 
 /**
  * Resolves a media path from projects.json to a deployable URL.
@@ -51,7 +52,6 @@ const getSlugFromUrl = () => {
 const findProjectBySlug = (slug) =>
   projectsData.projects.find((project) => project.slug === slug);
 
-console.log("Hello World");
 /**
  * Logs a message whenever a project video is clicked.
  * @param {HTMLVideoElement} video
@@ -65,25 +65,6 @@ const initVideoClickLogging = (video) => {
   };
 
   video.addEventListener("click", handleVideoClick);
-};
-
-/**
- * Marks a project video as display-ready when its poster or metadata exists.
- * @param {HTMLVideoElement} video
- */
-const initProjectVideoReadyState = (video) => {
-  if (video.poster || video.readyState >= HTMLMediaElement.HAVE_METADATA) {
-    video.classList.add("is-media-ready");
-    return;
-  }
-
-  video.addEventListener(
-    "loadedmetadata",
-    () => {
-      video.classList.add("is-media-ready");
-    },
-    { once: true },
-  );
 };
 
 /**
@@ -259,7 +240,7 @@ const renderProjectDetail = (container, project) => {
   `;
 
   container.querySelectorAll("video").forEach((video) => {
-    initProjectVideoReadyState(video);
+    initVideoReadyState(video);
     initVideoClickLogging(video);
   });
 

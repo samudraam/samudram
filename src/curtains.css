@@ -1,0 +1,112 @@
+/**
+ * curtains.css
+ * ============
+ * PURPOSE: Styles for the app-wide stagger-wipe transition driven by
+ * curtains.js. The overlay is a fixed full-screen flex row; each .curtain
+ * panel is an equal-width column (flex: 1), so ANY panel count fills the
+ * viewport — this is what lets curtains.js vary the count per breakpoint
+ * without touching CSS. Also owns the page-load scroll lock and the
+ * media-ready visibility rules (previously in loader.css). No functions —
+ * main sections are: --curtain-bg color variable, scroll lock, media-ready
+ * rules, #curtains overlay with boot state, and .curtain panels.
+ */
+
+:root {
+  /* Opaque base painted behind every gradient layer so transparent stops
+     in --curtain-bg never reveal grain, scanlines, or page texture. */
+  --curtain-solid: #010b24;
+  /* Curtain color, one variable for the whole system.
+     - Default: the ocean gradient (home page + demo).
+     - Themed pages: theme.css points this at var(--theme-bg).
+     - Contact: contact.css overrides it with a frost gradient. */
+  --curtain-bg: radial-gradient(
+      circle at 50% 45%,
+      rgba(1, 141, 197, 0.55),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #062a4e 0%, #010b24 100%);
+}
+
+/* Scroll stays locked while the page loads under the curtains;
+   page-transitions.js removes the class after the reveal. */
+body.is-loading {
+  overflow: hidden;
+}
+
+/* Hide custom elements and videos until they are ready to display.
+   Videos get .is-media-ready from video-ready.js once frame data exists. */
+:not(:defined) {
+  visibility: hidden;
+}
+
+video:not(.is-media-ready) {
+  visibility: hidden;
+}
+
+.is-media-ready {
+  position: relative;
+  z-index: 10;
+}
+
+#curtains {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: row;
+  /* Above every piece of page chrome, including the pill nav (z-index 10),
+     so the wipe sweeps over the nav along with the rest of the page. */
+  z-index: 3000;
+  /* Prevent backdrop/grain from compositing through the overlay stack. */
+  isolation: isolate;
+  /* Idle overlay must never block clicks — panels are off-screen anyway,
+     but pointer-events would still hit the container without this. */
+  pointer-events: none;
+}
+
+/* Boot state: painted by static HTML before any JS runs, so the page is
+   covered from the very first frame with no flash of content. curtains.js
+   swaps this solid cover for real panels, then animates them out. */
+#curtains.curtains--boot,
+#curtains.curtains--active {
+  background-color: var(--curtain-solid);
+}
+
+#curtains.curtains--boot {
+  background-image: var(--curtain-bg);
+  pointer-events: auto;
+}
+
+/* Opaque plate behind panels — blocks grain/texture if panels gap briefly. */
+#curtains.curtains--boot::before,
+#curtains.curtains--active::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--curtain-solid);
+  z-index: 0;
+}
+
+#curtains.curtains--active {
+  /* Block interaction only while a transition is actually running. */
+  pointer-events: auto;
+}
+
+.curtain {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  /* Solid base blocks underlying texture; gradient sits on top only. */
+  background-color: var(--curtain-solid);
+  background-image: var(--curtain-bg);
+  /* curtains.js sets inline background-size/position per panel so the N
+     columns show N slices of ONE viewport-wide gradient instead of N
+     repeated copies — essential for the radial theme gradients. */
+  /* Panels wait below the viewport until Motion.js animates them.
+     curtains.js animates y: 100% -> 0 (cover), then 0 -> -100% (reveal). */
+  transform: translateY(100%);
+  backface-visibility: hidden;
+  will-change: transform;
+  /* A hair of negative margin overlaps adjacent panels so subpixel
+     rounding never shows a seam between columns mid-animation. */
+  margin-inline: -0.5px;
+}

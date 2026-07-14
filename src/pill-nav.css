@@ -2,16 +2,13 @@
  * pill-nav.css
  * ============
  * PURPOSE: Styles the pill-shaped navigation bar shared by every page: a
- * fixed, centered, frosted-glass bar with the main site links. Also enables
- * cross-page view transitions so the nav appears to persist while the rest
- * of the page changes. Uses pixel-based sizing so it stays consistent
- * regardless of each page's root font-size (home uses 24px, others 16px).
- * No functions — main sections are: @view-transition, :root sizing
- * variables, and .pill-nav styles.
+ * fixed, centered, frosted-glass bar with the main site links. Page
+ * transitions are handled by the curtains overlay (curtains.js), which
+ * sweeps over the nav along with the rest of the page. Uses pixel-based
+ * sizing so it stays consistent regardless of each page's root font-size
+ * (home uses 24px, others 16px). No functions — main sections are: :root
+ * sizing variables and .pill-nav styles.
  */
-@view-transition {
-  navigation: auto;
-}
 
 :root {
   --nav-link-size: 14px;
@@ -40,7 +37,6 @@
   backdrop-filter: blur(3.9px);
   -webkit-backdrop-filter: blur(3.9px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  view-transition-name: pill-nav;
   contain: layout;
 }
 
@@ -55,20 +51,6 @@
 
 .pill-nav a:hover {
   color: rgb(var(--theme-nav-hover, 78, 152, 255));
-}
-
-::view-transition-old(pill-nav),
-::view-transition-new(pill-nav) {
-  animation-duration: 0.45s;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  height: auto;
-}
-
-::view-transition-old(page-background),
-::view-transition-new(page-background) {
-  animation-duration: 0.35s;
-  animation-timing-function: ease;
-  object-fit: cover;
 }
 
 @media (max-width: 768px) {
@@ -92,15 +74,3 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  @view-transition {
-    navigation: none;
-  }
-
-  ::view-transition-old(pill-nav),
-  ::view-transition-new(pill-nav),
-  ::view-transition-old(page-background),
-  ::view-transition-new(page-background) {
-    animation: none;
-  }
-}

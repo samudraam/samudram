@@ -25,6 +25,7 @@ export default defineConfig(({ command }) => ({
         project: resolve(__dirname, "project.html"),
         about: resolve(__dirname, "about.html"),
         contact: resolve(__dirname, "contact.html"),
+        curtainsDemo: resolve(__dirname, "curtains-demo.html"),
       },
     },
   },

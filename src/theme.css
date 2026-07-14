@@ -12,7 +12,7 @@
  */
 
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Syne:wght@400..800&display=swap");
-@import "./loader.css";
+@import "./curtains.css";
 @import "./pill-nav.css";
 
 /**
@@ -36,6 +36,13 @@
   --theme-glow: 0, 212, 170;
   --theme-surface: 0, 5, 15;
   --theme-text: 255, 255, 255;
+
+  /* Curtain transitions on themed pages wipe in the page's own theme
+     gradient. --theme-bg updates live (apply-theme.js / about switcher),
+     and each transition reads the value when it starts. --curtain-solid is
+     the opaque base so transparent gradient stops never show page texture. */
+  --curtain-solid: #01031e;
+  --curtain-bg: var(--theme-bg);
 }
 
 [data-theme="ocean"] {
@@ -56,6 +63,7 @@
 
 [data-theme="black"] {
   --theme-bg: #0a0a0a;
+  --curtain-solid: #0a0a0a;
   --theme-overlay: rgba(0, 0, 0, 0.6);
   --theme-accent: 255, 255, 255;
   --theme-accent-hover: 200, 200, 200;
@@ -128,6 +136,7 @@
 }
 
 [data-theme="cookie"] {
+  --curtain-solid: #c4a882;
   --theme-bg: radial-gradient(
     circle at 35% 25%,
     #fff8ef 0%,
@@ -167,6 +176,7 @@
 }
 
 [data-theme="playground"] {
+  --curtain-solid: #4d7a42;
   --theme-bg: linear-gradient(
     180deg,
     #7eb8da 0%,
@@ -218,19 +228,6 @@
   border-color: rgba(22, 30, 26, 0.1);
   box-shadow: 0 8px 32px rgba(48, 108, 72, 0.08),
     inset 0 1px rgba(255, 255, 255, 0.6);
-}
-
-:not(:defined) {
-  visibility: hidden;
-}
-
-video:not(.is-media-ready) {
-  visibility: hidden;
-}
-
-.is-media-ready {
-  position: relative; 
-  z-index: 10;        
 }
 
 @font-face {
