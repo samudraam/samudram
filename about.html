@@ -4,12 +4,29 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/samudram/portfolio.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      /** Restores outgoing curtain colors before the destination first paints. */
+      (() => {
+        try {
+          const key = "curtain-source-theme";
+          const storedTheme = sessionStorage.getItem(key);
+          if (!storedTheme) return;
+          const theme = JSON.parse(storedTheme);
+          sessionStorage.removeItem(key);
+          if (!theme.background || !theme.solid) return;
+          window.__curtainSourceTheme = theme;
+          const root = document.documentElement.style;
+          root.setProperty("--curtain-boot-bg", theme.background);
+          root.setProperty("--curtain-boot-solid", theme.solid);
+        } catch {}
+      })();
+    </script>
     <title>About — samudraam</title>
-    <script type="module" crossorigin src="/samudram/assets/about-mp_ZdxId.js"></script>
-    <link rel="modulepreload" crossorigin href="/samudram/assets/curtains-XgKsR866.js">
+    <script type="module" crossorigin src="/samudram/assets/about-Cm4yskBK.js"></script>
+    <link rel="modulepreload" crossorigin href="/samudram/assets/curtains-B_ICgrMr.js">
     <link rel="modulepreload" crossorigin href="/samudram/assets/apply-theme-Ce-kM_Nc.js">
-    <link rel="modulepreload" crossorigin href="/samudram/assets/page-transitions-B08BrUxd.js">
-    <link rel="stylesheet" crossorigin href="/samudram/assets/about-CehrqzNr.css">
+    <link rel="modulepreload" crossorigin href="/samudram/assets/page-transitions-CQoERCvc.js">
+    <link rel="stylesheet" crossorigin href="/samudram/assets/about-v0hJdOwG.css">
   </head>
   <body class="is-loading">
     <div id="curtains" class="curtains--boot" aria-hidden="true"></div>
